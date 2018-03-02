@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"node server/app.js\"",
+    "start": "node server/app.js",
+    "start-dev": "tsc && concurrently \"tsc -w\" \"node server/app.js\"",
     "run-server": "node server/app.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
