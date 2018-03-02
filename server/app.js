@@ -40,6 +40,6 @@ app.put("/api/1.0.0/todos/create", function(req, res) {
     res.send({success: true});
 });
 
-
+console.log("Server started on port:",process.env.PORT || 3000);
 
 app.listen(process.env.PORT || 3000);
