@@ -40,6 +40,30 @@ app.put("/api/1.0.0/todos/create", function(req, res) {
     res.send({success: true});
 });
 
+app.get("/api/status", function(req, res) {
+    res.send(status);
+});
 
+var status = {
+  "Status":"Ok",
+  "Hostname":process.env.HOSTNAME || "empty",
+  "Port":process.env.PORT || 3000,
+  "Home directory": process.env.HOME,
+  "Script:": process.env.npm_package_scripts_run_server,
+  "PWD": process.env.PWD,
+  "Init CWD":process.env.INIT_CWD,
+  "NPM package name":process.env.npm_package_name
+};
+
+console.log("Listening on port:", process.env.PORT || 3000);
+console.log("Home directory:", process.env.HOME);
+console.log("Meteor Port:", process.env.METEOR_PORT);
+console.log("Script:",process.env.npm_package_scripts_run_server);
+console.log("PWD:",process.env.PWD);
+console.log("Init CWD:",process.env.INIT_CWD);
+console.log("NPM package name:",process.env.npm_package_name);
+console.log("Hostname:",process.env.HOSTNAME);
+
+//console.log("All env variables:", process.env);
 
 app.listen(process.env.PORT || 3000);
