@@ -67,3 +67,5 @@ console.log("Hostname:",process.env.HOSTNAME);
 //console.log("All env variables:", process.env);
 
 app.listen(process.env.PORT || 3000);
+
+console.log("Server started on port:",process.env.PORT || 3000);
