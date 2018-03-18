@@ -10,15 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var todo_1 = require("./todo");
-var todo_service_1 = require("./todo.service");
+var todo_1 = require("./todo/todo");
+var todo_service_1 = require("./todo/todo.service");
+var user_service_1 = require("./user/user.service");
+var auth_service_1 = require("./auth.service");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(todoSerivce) {
+    function AppComponent(todoSerivce, authSerivce, userService) {
         this.todoSerivce = todoSerivce;
+        this.authSerivce = authSerivce;
+        this.userService = userService;
         this.newTodo = new todo_1.Todo("", "");
+        authSerivce.handleAuthentication();
     }
     AppComponent.prototype.ngOnInit = function () {
         this.todos$ = this.todoSerivce.todos$;
+        this.users$ = this.userService.users$;
     };
     AppComponent.prototype.onAddTodo = function () {
         this.todoSerivce.create(this.newTodo);
@@ -26,9 +32,9 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: "todo-app",
-            template: "\n        <h1>Todo-Liste!!</h1>\n        <ul>\n            <li *ngFor=\"let todo of todos$|async\">\n                <strong>{{ todo.title }}:</strong>\n                <span>{{ todo.content }}</span>\n            </li>\n        </ul>\n       <h3>Neues Todo hinzuf\u00FCgen</h3>\n       <input type=\"text\" [(ngModel)]=\"newTodo.title\" />\n       <input type=\"text\" [(ngModel)]=\"newTodo.content\" />\n       <button (click)=\"onAddTodo()\">Todo speichern!</button>\n    "
+            templateUrl: 'client/app/app.component.html'
         }),
-        __metadata("design:paramtypes", [todo_service_1.TodoService])
+        __metadata("design:paramtypes", [todo_service_1.TodoService, auth_service_1.AuthService, user_service_1.UserService])
     ], AppComponent);
     return AppComponent;
 }());

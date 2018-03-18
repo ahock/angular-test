@@ -1,34 +1,31 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Todo } from './todo';
-import { TodoService } from './todo.service';
+import { Todo } from './todo/todo';
+import { User } from './user/user';
+
+import { TodoService } from './todo/todo.service';
+import { UserService } from './user/user.service';
+import { AuthService } from './auth.service';
+
 
 @Component({
     selector: "todo-app",
-    template: `
-        <h1>Todo-Liste!!</h1>
-        <ul>
-            <li *ngFor="let todo of todos$|async">
-                <strong>{{ todo.title }}:</strong>
-                <span>{{ todo.content }}</span>
-            </li>
-        </ul>
-       <h3>Neues Todo hinzufügen</h3>
-       <input type="text" [(ngModel)]="newTodo.title" />
-       <input type="text" [(ngModel)]="newTodo.content" />
-       <button (click)="onAddTodo()">Todo speichern!</button>
-    `
+    templateUrl: 'client/app/app.component.html'
 })
 export class AppComponent {
     todos$: Observable<Todo[]>;
+    users$: Observable<User[]>;
     
     newTodo = new Todo("", "");
 
-    constructor(private todoSerivce: TodoService) { }
+    constructor(private todoSerivce: TodoService, public authSerivce: AuthService, public userService: UserService) {
+        authSerivce.handleAuthentication();
+    }
 
     ngOnInit() {
         this.todos$ = this.todoSerivce.todos$;
+        this.users$ = this.userService.users$;
     }
 
     onAddTodo() {

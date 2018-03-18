@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">
+    <img src="/client/img/Auth0-Logo.png" width="30" height="30" alt="">
+  </a>
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <form>
+           <button
+            id="qsLoginBtn"
+            class="btn btn-primary btn-margin my-2 my-sm-0"
+            *ngIf="!authSerivce.isAuthenticated()"
+            (click)="authSerivce.login()">
+              Log In
+          </button>
+          <button
+            id="qsLogoutBtn"
+            class="btn btn-primary btn-margin my-2 my-sm-0"
+            *ngIf="authSerivce.isAuthenticated()"
+            (click)="authSerivce.logout()">
+              Log Out
+          </button>     
+        </form>    
+      </li>
+    </ul>
+</nav>

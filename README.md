@@ -26,3 +26,9 @@ Git-Befehle:https://rogerdudler.github.io/git-guide/index.de.html
 MarkDown-Hilfe:https://help.github.com/categories/writing-on-github/
 
 JSON-Online Editor:http://www.jsoneditoronline.org/
+
+
+#Auth0 - User:
+
+andreashock@bluewin.ch
+test4test

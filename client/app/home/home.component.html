@@ -1,0 +1,61 @@
+<div class="container">
+  <!-- Content here -->
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+<div class="container">
+      <h4 *ngIf="auth.isAuthenticated()">
+        
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Mastery Aktuell</h3>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>        
+
+<div class="container">
+  <!-- Content here -->
+  <p>&nbsp;</p>
+</div>
+
+        <div class="card">
+          <div class="card-header">
+            Mastery Aktuell
+          </div>
+          <div class="card-body">
+            <p>Für individualisiertes selbstgesteuertes Lernen, melden Sie sich bitte übean.</p>
+            <p>Hierzu ist ein aktiver Account nötig.</p>
+            <p>Wenn Sie keinen Account haben und Sie auch keine Einladung von Ihrem Dozenten erhalten haben, resistrieren Sie sich bitte hier.</p>
+            <p>style="width: 18rem;"</p>
+            <p>Ausloggen können Sie sich über <a (click)="auth.logout()">[Log Out]</a>.</p>
+          </div>
+        </div>
+        
+        
+      </h4>
+      <h4 *ngIf="!auth.isAuthenticated()">
+        <div class="card">
+          <div class="card-body">
+            <p>Für individualisiertes selbstgesteuertes Lernen, melden Sie sich bitte über <a (click)="auth.login()">[Log In]</a> an.</p>
+            <p>Hierzu ist ein aktiver Account nötig.</p>
+            <p>Wenn Sie keinen Account haben und Sie auch keine Einladung von Ihrem Dozenten erhalten haben, resistrieren Sie sich bitte hier.</p>
+          </div>
+        </div>
+      </h4>
+</div>
+
+

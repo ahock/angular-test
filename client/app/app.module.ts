@@ -4,21 +4,40 @@ import { NgModule }      from '@angular/core';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+
+import {APP_BASE_HREF} from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { TodoService } from './todo.service';
+import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
+
+import { ROUTES } from './app.routes';
+
+import { TodoService } from './todo/todo.service';
+import { AuthService } from './auth.service';
+import { UserService } from './user/user.service';
+
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   imports: [ 
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(ROUTES)
   ],
   declarations: [ 
-    AppComponent
+    AppComponent,
+    CallbackComponent,
+    HomeComponent,
+    UserComponent
   ],
   providers: [
-    TodoService
+    TodoService,
+    AuthService,
+    UserService,
+    { provide: APP_BASE_HREF, useValue : '/' }
   ],
   bootstrap: [ AppComponent ]
 })

@@ -11,8 +11,16 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
+var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
 var app_component_1 = require("./app.component");
-var todo_service_1 = require("./todo.service");
+var home_component_1 = require("./home/home.component");
+var user_component_1 = require("./user/user.component");
+var app_routes_1 = require("./app.routes");
+var todo_service_1 = require("./todo/todo.service");
+var auth_service_1 = require("./auth.service");
+var user_service_1 = require("./user/user.service");
+var callback_component_1 = require("./callback/callback.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -21,13 +29,20 @@ var AppModule = /** @class */ (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                http_1.HttpModule
+                http_1.HttpModule,
+                router_1.RouterModule.forRoot(app_routes_1.ROUTES)
             ],
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                callback_component_1.CallbackComponent,
+                home_component_1.HomeComponent,
+                user_component_1.UserComponent
             ],
             providers: [
-                todo_service_1.TodoService
+                todo_service_1.TodoService,
+                auth_service_1.AuthService,
+                user_service_1.UserService,
+                { provide: common_1.APP_BASE_HREF, useValue: '/' }
             ],
             bootstrap: [app_component_1.AppComponent]
         })

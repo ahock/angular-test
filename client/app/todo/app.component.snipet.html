@@ -1,0 +1,34 @@
+<h1>Todo-Liste!!</h1>
+        <p>{{ authSerivce.getUserToken() }}</p>
+        <ul>
+            <li *ngFor="let todo of todos$|async">
+                <strong>{{ todo.title }}:</strong>
+                <span>{{ todo.content }}</span>
+            </li>
+        </ul>
+       <h3>Neues Todo hinzufügen</h3>
+       <input type="text" [(ngModel)]="newTodo.title" />
+       <input type="text" [(ngModel)]="newTodo.content" />
+       <button class="btn btn-primary btn-margin" (click)="onAddTodo()">Todo speichern!</button>
+
+      <button
+        class="btn btn-primary btn-margin"
+        routerLink="/">
+          Home
+      </button>
+
+      <button
+        id="qsLoginBtn"
+        class="btn btn-primary btn-margin"
+        *ngIf="!authSerivce.isAuthenticated()"
+        (click)="authSerivce.login()">
+          Log In
+      </button>
+
+      <button
+        id="qsLogoutBtn"
+        class="btn btn-primary btn-margin"
+        *ngIf="authSerivce.isAuthenticated()"
+        (click)="authSerivce.logout()">
+          Log Out
+      </button>
