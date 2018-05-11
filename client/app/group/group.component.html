@@ -1,0 +1,33 @@
+<p>&nbsp;</p>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">Gruppen</a>
+</nav>
+
+<div class="container">
+  <!-- Content here -->
+
+<h1><span *ngIf="!auth.isAuthenticated()">(nicht angemeldet)</span>{{ this.myClass.getName() }}&nbsp;<span class="badge badge-secondary">New</span></h1>
+
+<form *ngIf="auth.isAuthenticated()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Gruppenname</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter group name">
+    <small id="emailHelp" class="form-text text-muted">Wähle einen sinnvollen Gruppennamen.</small>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Füge mich selbst als Betreuer in die Gruppe ein.</label>
+  </div>
+  
+  <div class="form-group">
+    <label for="importclasstext">Liste der Gruppenmitglieder mit Name und Email-Adresse.</label>
+    <textarea #importclasstext class="form-control" rows="5" ></textarea>
+  </div>  
+  
+  <button type="submit" class="btn btn-primary" (click)="this.myClass.import(importclasstext.value)">Import</button>
+  
+  <p>Hallo <img src="../../client/img/open-iconic/arrow-circle-right-4x.png" />Test</p>
+  
+</form>
+
+</div>
