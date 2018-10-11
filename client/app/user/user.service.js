@@ -17,34 +17,52 @@ var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
         this.users$ = new Subject_1.Subject();
-        this.loadUser();
+        console.log("UserService Constructor");
+        // this.loadUser("hh-hh-hh");
     }
-    UserService.prototype.loadUser = function () {
+    UserService.prototype.loadUser = function (token) {
         var _this = this;
-        this.http.get("/api/0.0.1/user/get")
+        this.http.get("/api/0.0.1/user/get", { params: { UserToken: token } })
             .map(function (response) {
-            console.log("User", response);
+            console.log("loadUser", response);
+            console.log("loadUserJSON", response.json());
+            //Create user object
+            //this.user = new User(response.json);
             return response.json();
         })
             .map(function (list) {
+            console.log("List", list);
             var userList = [];
-            for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
-                var element = list_1[_i];
-                userList.push(new user_1.User(element['auth_token'], element['email']));
-            }
+            /*                for (let element of list) {
+                                console.log("Element", element);
+                                userList.push(
+                                    new User(element['auth_token'], element['email'])
+                                );
+                            }*/
+            console.log("New User", list);
+            userList.push(new user_1.User(list));
             return userList;
+            //return list;
         })
             .forEach(function (list) {
             _this.users$.next(list);
         });
+        //        console.log("New User", this.users$);                  
     };
     UserService.prototype.create = function (user) {
-        var _this = this;
         this.http.put("/api/0.0.1/user/create", user_1.User)
             .forEach(function (response) {
             console.log(response);
-            _this.loadUser();
+            // this.loadUser();
         });
+    };
+    UserService.prototype.getUserCount = function () {
+        console.log("getUserCount: ", this.users$);
+        return this.users$;
+    };
+    UserService.prototype.getCurrentUser = function () {
+        console.log("getCurrentUser: ", this.user);
+        return this.user;
     };
     UserService = __decorate([
         core_1.Injectable(),

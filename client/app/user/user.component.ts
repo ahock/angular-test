@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../auth.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'user-home',
@@ -8,9 +9,10 @@ import { AuthService } from './../auth.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService, public user: UserService) { }
 
   ngOnInit() {
+    console.log("UserComponent:", this.user.getUserCount());
   }
 
 }

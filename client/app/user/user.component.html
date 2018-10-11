@@ -4,6 +4,67 @@
   <p>&nbsp;</p>
 </div>
 <div class="container">
-      <h4 *ngIf="auth.isAuthenticated()">Angemeldet</h4>
+      <div *ngIf="auth.isAuthenticated()">
+        
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Parameter</th>
+              <th scope="col">Wert</th>
+              <th scope="col">Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>User Token</td>
+              <td>{{ auth.getUserToken() }}</td>
+              <td>Vergeben vom Authorisierungsservice</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Name</td>
+              <td>{{ auth.getAuthDetails().name }}</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Nickname</td>
+              <td>{{ auth.getAuthDetails().nickname }}</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Letztes Login</td>
+              <td>{{ auth.getAuthDetails().last_login }}</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Bild</td>
+              <td><img [src]="auth.getAuthDetails().picture"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td colspan="3"></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>User DB</td>
+              <td>{{ user.getCurrentUser().email }}</td>
+              <td>Informationen aus der User-Datenbank</td>
+            </tr>
+            
+          </tbody>
+        </table>
+        
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary" (click)="user.loadUser(auth.getUserToken)">Neu laden</button>
+          <button class="btn">Ändern</button>
+          <button class="btn">Löschen</button>
+        </div>
+        
+      </div>
       <h4 *ngIf="!auth.isAuthenticated()">Nicht angemeldet</h4>
 </div>          

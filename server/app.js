@@ -23,23 +23,36 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
     console.log("Error:", err, MONGO_DB_URI);    
 });
-var Schema = mongoose.Schema;
 
+
+
+var Schema = mongoose.Schema;
 var userTestData = new Schema({
     text: String,
     lang: String
 },{collection: 'test'});
-
 const TestData = mongoose.model('testData', userTestData);
+
+
 
 app.get("/", function(req, res) {
     console.log("index.html aufgerufen:", req.query);
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
+app.get("/test", function(req, res) {
+    console.log("test.html aufgerufen:", req.query);
+    res.sendFile(path.join(__dirname, "views", "test.html"));
+});
 
 app.get("/favicon.ico", function(req, res) {
     res.sendFile(path.join(__dirname, ".", "favicon.ico"));
 });
+
+///////////////////////////////////////////////////////////////
+//
+// ToDo's
+//
+///////////////////////////////////////////////////////////////
 
 app.get("/api/0.1.0/todos", function(req, res) {
     TestData.find()
@@ -48,7 +61,6 @@ app.get("/api/0.1.0/todos", function(req, res) {
             res.send(doc);
     });
 });
-
 
 var todos = [
     {
@@ -97,28 +109,128 @@ app.put("/api/1.0.0/todos/create", function(req, res) {
 //
 ///////////////////////////////////////////////////////////////
 
-var userList = [
-    {
-        token: "auth0|5982bfc096b8174f9f2d5ce0",
-        email: "andreashock@bluewin.ch",
-        firstname: "Andreas",
-        lastname: "Hock"
-    },
-    {
-        token: "",
-        email: "aho@gmx.de",
-        firstname: "Ted",
-        lastname: "Hock"
-    }
-];
-
-app.get("/api/0.0.1/user/get", function(req, res) {
-    console.log("/api/0.0.1/user/get");
-    res.send(userList);
+//var Schema = mongoose.Schema;
+var masteryData = new Schema({
+    token: String,
+    name: String,
+    status: String
 });
 
+var userData = new Schema({
+    token: String,
+    email: String,
+    firstname: String,
+    lastname: String,
+    last_login: Date,
+    login_history: [String],
+    groups: [String],
+    goals: [String],
+    masteries: [masteryData],
+    lang: String
+},{collection: 'users'});
 
-// User ////////////////////////////////////////////////////////
+const userDataModel = mongoose.model('UserData', userData);
+
+/*
+console.log("User1", User1);
+User1.save(function (err, User1) {
+    if (err) return console.error(err);
+});
+*/
+
+var userList = [];
+
+userDataModel.find(function (err, user) {
+  if (err) return console.error(err);
+  userList = user;
+  // console.log("userList aus MongoDB:", userList);
+});
+
+app.get("/api/0.0.1/user/get", function(req, res) {
+    // Parameter
+    //  UserToken
+    //
+    console.log("/api/0.0.1/user/get");
+    // Log Device parameter
+    console.log("IP", req.ip);
+    console.log("Token", req.query.UserToken);
+    
+    ///// Search for user with this token
+    var ok = false;
+    var j;
+    for(var i = 0; i<userList.length;i++) {
+        console.log("Token",userList[i].token);
+        if(userList[i].token == req.query.UserToken) {
+            console.log("Ok",i);
+            ok = true;
+            j = i;
+            i = userList.length;
+        }
+    }
+    if(ok) {
+        console.log("User with token:", userList[j].token);
+        res.send(userList[j]);
+    }
+    else {
+        console.log("No user found!");
+        res.send({success: false, error: "no such user"});
+    }
+});
+app.get("/api/0.0.1/user/add", function(req, res) {
+    ///// Add new user
+    var newuserflag = true;
+    /// Check existance
+    ///// Search for user with this token
+    if( req.query.UserToken != "" && req.query.UserToken != undefined) {
+        var j;
+        for(var i = 0; i<userList.length;i++) {
+            console.log("Token",userList[i].token);
+            if(userList[i].token == req.query.UserToken) {
+                console.log("Ok",i);
+                newuserflag = false;
+                j = i;
+                i = userList.length;
+            }
+        }
+    }
+    /// Stage data
+    if(newuserflag) {
+        console.log("New user!", req.query.UserData);
+        var stageuserdata = JSON.parse(req.query.UserData);
+        stageuserdata.token = req.query.UserToken;
+        stageuserdata.last_login = new Date();
+        console.log("New user data object", stageuserdata);
+    }
+    else {
+        console.log("User with token:", userList[j].token);
+        res.send({success: false, error: "user exists"});
+    }
+    /// Create object and save
+    if(newuserflag) {
+        var User1 = new userDataModel(stageuserdata);
+        User1.save();
+        userList.push(User1);
+        console.log("Save new user!", User1, userList);
+        res.send({success: true, error: "user created"});
+    }
+});
+app.get("/api/0.0.1/user/reload", function(req, res) {
+    ///// Reload data from DB
+
+    userDataModel.find(function (err, user) {
+        if (err) return console.error(err);
+        userList = user;
+        console.log("userList aus MongoDB:", userList);
+        res.send({success: true, function: "reload"});
+    });
+});
+app.get("/api/0.0.1/user/list", function(req, res) {
+    ///// List with all users
+
+    console.log("userList from memory:", userList);
+    res.send(userList);
+});    
+// User Ende ////////////////////////////////////////////////////////
 
 
 

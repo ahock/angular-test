@@ -11,18 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var auth_service_1 = require("./../auth.service");
+var user_service_1 = require("./user.service");
 var UserComponent = /** @class */ (function () {
-    function UserComponent(auth) {
+    function UserComponent(auth, user) {
         this.auth = auth;
+        this.user = user;
     }
     UserComponent.prototype.ngOnInit = function () {
+        console.log("UserComponent:", this.user.getUserCount());
     };
     UserComponent = __decorate([
         core_1.Component({
             selector: 'user-home',
             templateUrl: 'client/app/user/user.component.html',
         }),
-        __metadata("design:paramtypes", [auth_service_1.AuthService])
+        __metadata("design:paramtypes", [auth_service_1.AuthService, user_service_1.UserService])
     ], UserComponent);
     return UserComponent;
 }());

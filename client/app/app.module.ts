@@ -11,6 +11,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
+import { GroupComponent } from './group/group.component';
 
 import { ROUTES } from './app.routes';
 
@@ -31,7 +32,8 @@ import { CallbackComponent } from './callback/callback.component';
     AppComponent,
     CallbackComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    GroupComponent
   ],
   providers: [
     TodoService,

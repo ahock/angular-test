@@ -1,14 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var User = /** @class */ (function () {
-    function User(auth_token, email) {
-        this.auth_token = auth_token;
-        this.email = email;
+    function User(UserJSON) {
+        console.log("User Constructor", UserJSON);
+        console.log("Token", UserJSON.token);
+        console.log("Masteries", UserJSON.masteries);
+        this.auth_token = UserJSON.token;
+        this.email = "abc";
     }
+    User.prototype.getUserToken = function () {
+        return this.auth_token;
+    };
     return User;
 }());
 exports.User = User;
-(function () {
-    return "dfghj";
-});
 //# sourceMappingURL=user.js.map

@@ -16,6 +16,7 @@ var common_1 = require("@angular/common");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var user_component_1 = require("./user/user.component");
+var group_component_1 = require("./group/group.component");
 var app_routes_1 = require("./app.routes");
 var todo_service_1 = require("./todo/todo.service");
 var auth_service_1 = require("./auth.service");
@@ -36,7 +37,8 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 callback_component_1.CallbackComponent,
                 home_component_1.HomeComponent,
-                user_component_1.UserComponent
+                user_component_1.UserComponent,
+                group_component_1.GroupComponent
             ],
             providers: [
                 todo_service_1.TodoService,
