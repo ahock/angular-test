@@ -18,7 +18,7 @@ var UserComponent = /** @class */ (function () {
         this.user = user;
     }
     UserComponent.prototype.ngOnInit = function () {
-        console.log("UserComponent:", this.user.getUserCount());
+        console.log("UserComponentInit:", this.user.user);
     };
     UserComponent = __decorate([
         core_1.Component({

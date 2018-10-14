@@ -20,6 +20,7 @@ var AppComponent = /** @class */ (function () {
         this.authSerivce = authSerivce;
         this.userService = userService;
         this.newTodo = new todo_1.Todo("", "");
+        console.log("Constructor: AppComponent");
         authSerivce.handleAuthentication();
     }
     AppComponent.prototype.ngOnInit = function () {

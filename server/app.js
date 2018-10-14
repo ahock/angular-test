@@ -114,6 +114,10 @@ var masteryData = new Schema({
     token: String,
     name: String,
     status: String
+    
+    
+    
+    
 });
 
 var userData = new Schema({
@@ -143,6 +147,7 @@ var userList = [];
 userDataModel.find(function (err, user) {
   if (err) return console.error(err);
   userList = user;
+  console.log("Anzahl User geladen:", userList.length);
   // console.log("userList aus MongoDB:", userList);
 });
 
@@ -159,7 +164,7 @@ app.get("/api/0.0.1/user/get", function(req, res) {
     var ok = false;
     var j;
     for(var i = 0; i<userList.length;i++) {
-        console.log("Token",userList[i].token);
+//        console.log("Token",userList[i].token);
         if(userList[i].token == req.query.UserToken) {
             console.log("Ok",i);
             ok = true;
@@ -184,7 +189,7 @@ app.get("/api/0.0.1/user/add", function(req, res) {
     if( req.query.UserToken != "" && req.query.UserToken != undefined) {
         var j;
         for(var i = 0; i<userList.length;i++) {
-            console.log("Token",userList[i].token);
+//            console.log("Token",userList[i].token);
             if(userList[i].token == req.query.UserToken) {
                 console.log("Ok",i);
                 newuserflag = false;
@@ -231,6 +236,131 @@ app.get("/api/0.0.1/user/list", function(req, res) {
     res.send(userList);
 });    
 // User Ende ////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////
+//
+// Review, Test, Verification, former Mastery, Überprüfung, Erfolgskontrolle, Lernzielkontrolle
+//
+///////////////////////////////////////////////////////////////
+
+var reviewSchema = new Schema({
+    name: String,
+    status: ['upcoming','open','done'],
+    type: ['Mastery','ATL','Verify'],
+    modul: String,
+    learninggoal: [{
+        name: String
+    }],
+    autor: String,
+    options: {
+        start: Boolean,
+        replay: Boolean,
+        delay: Boolean,
+        locked: Boolean,
+        coach: Boolean
+    },
+    group: String,
+    result: String,
+    challenges: [String]
+},{collection: 'reviews'});
+
+const reviewModel = mongoose.model('Review', reviewSchema);
+/*
+var Review = new reviewModel({
+    name: "AIMY - M1: Aimy Konzept",
+    type: "Mastery",
+    modul: "Learning with Aimy",
+    autor: "Andreas Hock",
+    challenges: ["Aufgabe 1","Aufgabe 2","Aufgabe 3"]
+});
+
+console.log("Review 1", Review);
+
+Review.save(function (err, Review) {
+    if (err) return console.error(err);
+});
+*/
+
+var reviewList = [];
+
+reviewModel.find(function (err, reviews) {
+  if (err) return console.error(err);
+  reviewList = reviews;
+  console.log("Anzahl Reviews geladen:", reviewList.length);
+});
+
+app.get("/api/0.0.1/review/get", function(req, res) {
+    // Parameter
+    //  id
+    //
+    console.log("/api/0.0.1/review/get");
+    // Log Device parameter
+    console.log("IP", req.ip);
+    console.log("id", req.query.id);
+    
+    ///// Search for user with this token
+    var ok = false;
+    var j;
+    for(var i = 0; i<reviewList.length;i++) {
+        console.log("id",reviewList[i]._id);
+        if(reviewList[i]._id == req.query.id) {
+            console.log("Ok",i);
+            ok = true;
+            j = i;
+            i = userList.length;
+        }
+    }
+    if(ok) {
+        console.log("Review with id:", reviewList[j]._id);
+        res.send(reviewList[j]);
+    }
+    else {
+        console.log("No review found!");
+        res.send({success: false, error: "no such review"});
+    }
+});
+
+app.get("/api/0.0.1/review/list", function(req, res) {
+    ///// List with all users
+
+    console.log("reviewList from memory:", reviewList);
+    res.send(reviewList);
+}); 
+
+// Review Ende ////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////
+//
+// Challenge, Aufgabe, Frage, ...
+//
+///////////////////////////////////////////////////////////////
+
+/*
+var verificationSchema = new Schema({
+
+    name: String,
+    status: ['upcoming',open','done'],
+    type: ['Mastery','ATL','Verify'],
+    modul: "Learning with Aimy",
+    learninggoal: [{
+        name: String
+    }],
+    autor: String,
+    options: {
+        start: boolean,
+        replay: boolean,
+        delay: boolean,
+        locked: boolean,
+        coach: boolean
+    },
+    group
+    result: {}
+    "resultpro": "width: 25%",
+    tasks: [taskSchema]
+*/
+
+// Challenge Ende ////////////////////////////////////////////////////////
 
 
 

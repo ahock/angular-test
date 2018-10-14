@@ -21,7 +21,9 @@ var app_routes_1 = require("./app.routes");
 var todo_service_1 = require("./todo/todo.service");
 var auth_service_1 = require("./auth.service");
 var user_service_1 = require("./user/user.service");
+var review_service_1 = require("./review/review.service");
 var callback_component_1 = require("./callback/callback.component");
+var review_component_1 = require("./review/review.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -38,12 +40,14 @@ var AppModule = /** @class */ (function () {
                 callback_component_1.CallbackComponent,
                 home_component_1.HomeComponent,
                 user_component_1.UserComponent,
-                group_component_1.GroupComponent
+                group_component_1.GroupComponent,
+                review_component_1.ReviewComponent
             ],
             providers: [
                 todo_service_1.TodoService,
                 auth_service_1.AuthService,
                 user_service_1.UserService,
+                review_service_1.ReviewService,
                 { provide: common_1.APP_BASE_HREF, useValue: '/' }
             ],
             bootstrap: [app_component_1.AppComponent]

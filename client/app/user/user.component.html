@@ -4,8 +4,15 @@
   <p>&nbsp;</p>
 </div>
 <div class="container">
-      <div *ngIf="auth.isAuthenticated()">
-        
+  <div *ngIf="auth.isAuthenticated()">
+
+    <h2>Profil des Lernenden</h2>
+    <div class="btn-group">
+          <button type="submit" class="btn btn-primary" (click)="user.loadUser(auth.getUserToken)">Neu laden</button>
+          <button class="btn">Ändern</button>
+          <button class="btn">Löschen</button>
+    </div>
+
         <table class="table table-hover">
           <thead>
             <tr>
@@ -24,7 +31,7 @@
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Name</td>
+              <td>Anmeldename</td>
               <td>{{ auth.getAuthDetails().name }}</td>
               <td></td>
             </tr>
@@ -39,31 +46,117 @@
               <td>{{ auth.getAuthDetails().last_login }}</td>
               <td></td>
             </tr>
-            <tr>
+<!--            <tr>
               <th scope="row">5</th>
               <td>Bild</td>
               <td><img [src]="auth.getAuthDetails().picture"></td>
               <td></td>
             </tr>
+
             <tr>
               <th scope="row"></th>
               <td colspan="3"></td>
             </tr>
+-->
+            <tr>
+              <th scope="row">5</th>
+              <td>Primäre Email</td>
+              <td>{{ user.getCurrentUser().email }}</td>
+              <td>Wird für Kommunikationszwecke verwendet</td>
+            </tr>
             <tr>
               <th scope="row">6</th>
-              <td>User DB</td>
-              <td>{{ user.getCurrentUser().email }}</td>
+              <td>Vorname</td>
+              <td>{{ user.getCurrentUser().firstname }}</td>
               <td>Informationen aus der User-Datenbank</td>
             </tr>
-            
+            <tr>
+              <th scope="row">7</th>
+              <td>Nachname</td>
+              <td>{{ user.getCurrentUser().lastname }}</td>
+              <td>Informationen aus der User-Datenbank</td>
+            </tr>
           </tbody>
         </table>
         
-        <div class="btn-group">
-          <button type="submit" class="btn btn-primary" (click)="user.loadUser(auth.getUserToken)">Neu laden</button>
-          <button class="btn">Ändern</button>
-          <button class="btn">Löschen</button>
-        </div>
+
+    <h2>Nachweise</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Art</th>
+              
+              <th scope="col">Zu Lernziel</th>
+              <th scope="col">Zu Lernfeld</th>
+              <th scope="col">Status</th>
+              <th scope="col">Begonnen</th>
+              <th scope="col">Abgeschlossen</th>
+              <th scope="col">Resultat</th>
+              <th scope="col">Optionen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mast of user.getCurrentUser().getVerifications(); index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td><a href='{{ mast._id }}'>{{ mast.name }}</a></td>
+              <td>{{ mast.learninggoal.type }}</td>
+              <td>{{ mast.learninggoal.name }}</td>
+              <td>{{ mast.modul }}</td>
+              <td>{{ mast.status }}</td>
+              <td>10.08.2018</td>
+              <td>17.09.2018</td>
+
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="15" style="width: 50%"></div>
+                </div>
+              </td>
+        
+              <td>
+                <img *ngIf="mast.options.start" src="../../client/img/open-iconic/media-play-2x.png" />
+                <img *ngIf="mast.options.delay" src="../../client/img/open-iconic/media-pause-2x.png" />
+                <img *ngIf="mast.options.replay" src="../../client/img/open-iconic/reload-2x.png" />
+
+                <img *ngIf="mast.options.locked" src="../../client/img/open-iconic/lock-locked-2x.png" />
+                <img *ngIf="!mast.options.locked" src="../../client/img/open-iconic/lock-unlocked-2x.png" />
+
+                <img *ngIf="mast.options.coach" src="../../client/img/open-iconic/person-2x.png" />
+                <img *ngIf="mast.options.group" src="../../client/img/open-iconic/people-2x.png" />
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+
+    <h2>Kompetenzziele</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ziel</th>
+              <th scope="col">Id</th>
+              <th scope="col">Status</th>
+              <th scope="col">Abgeschlossen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Learn AIMY</td>
+              <td>5bbe2b03e7d53f290d323b62</td>
+              <td>offen</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+    <h2>Lernfelder</h2>        
+    <p>Ggf. impliziet über Lernziele</p>
+
+    <h2>Lernziele</h2>
+
         
       </div>
       <h4 *ngIf="!auth.isAuthenticated()">Nicht angemeldet</h4>

@@ -18,8 +18,12 @@ import { ROUTES } from './app.routes';
 import { TodoService } from './todo/todo.service';
 import { AuthService } from './auth.service';
 import { UserService } from './user/user.service';
+import { ReviewService } from './review/review.service';
 
 import { CallbackComponent } from './callback/callback.component';
+
+import { ReviewComponent } from './review/review.component';
+
 
 @NgModule({
   imports: [ 
@@ -33,12 +37,14 @@ import { CallbackComponent } from './callback/callback.component';
     CallbackComponent,
     HomeComponent,
     UserComponent,
-    GroupComponent
+    GroupComponent,
+    ReviewComponent
   ],
   providers: [
     TodoService,
     AuthService,
     UserService,
+    ReviewService,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],
   bootstrap: [ AppComponent ]

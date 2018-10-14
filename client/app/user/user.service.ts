@@ -8,25 +8,28 @@ import { User } from './user';
 @Injectable()
 export class UserService {
     public users$: Subject<User[]> = new Subject();
+    
     public user: User;
 
     constructor(private http: Http ) {
-        console.log("UserService Constructor");
-        // this.loadUser("hh-hh-hh");
+        this.user = new User({firstname: "Udo", lastname: "Unbekannt"});
+        console.log("Constructor UserService:", this.user);
+        if( this.user.reload ) {
+            this.loadUser(this.user.getUserToken());
+        }
     }
 
     public loadUser(token: string) {
         this.http.get("/api/0.0.1/user/get", {params:{UserToken: token}})
             .map((response: Response) => {
-                console.log("loadUser", response);
+//                console.log("loadUser", response);
                 console.log("loadUserJSON", response.json());
                 //Create user object
                 //this.user = new User(response.json);
                 return response.json();
             })
-
             .map((list: any) => {
-                console.log("List", list);
+//                console.log("List", list);
                 var userList: User[] = [];
 /*                for (let element of list) {
                     console.log("Element", element);
@@ -34,17 +37,26 @@ export class UserService {
                         new User(element['auth_token'], element['email'])
                     );
                 }*/
-                console.log("New User", list);
+//                console.log("New User", list);
+//                console.log("user Object:", this.user);
+                
+                this.user.firstname = list.firstname;
+                this.user.lastname = list.lastname;
+                this.user.masteries = list.masteries;
+                this.user.email = list.email;
+                this.user.goals = list.goals;
+                this.user.groups = list.groups;
+                this.user.last_login = list.last_login;
+//                this.user.login_history = list.login_history;
+                console.log("Global user Object:", this.user);
                 userList.push(new User( list));
                 return userList;
                 //return list;
-                
             })
             .forEach((list: User[]) => {
                 this.users$.next(list);
             })
-//        console.log("New User", this.users$);                  
-            
+//        console.log("New User", this.users$); 
     }
 
     public create(user: User) {
@@ -60,7 +72,9 @@ export class UserService {
         return this.users$;
     }
     public getCurrentUser() : User {
-        console.log("getCurrentUser: ", this.user);
         return this.user;
+    }
+    public isAuthenticated() {
+        return this.isAuthenticated;
     }
 }

@@ -26,7 +26,7 @@ export class AuthService {
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
-      // console.log("authResult:", authResult);
+      console.log("authResult:", authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         console.log("Angemeldet als:", authResult.idTokenPayload.sub);

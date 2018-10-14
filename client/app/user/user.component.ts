@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   constructor(public auth: AuthService, public user: UserService) { }
 
   ngOnInit() {
-    console.log("UserComponent:", this.user.getUserCount());
+    console.log("UserComponentInit:", this.user.user);
   }
 
 }

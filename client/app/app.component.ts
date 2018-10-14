@@ -20,6 +20,7 @@ export class AppComponent {
     newTodo = new Todo("", "");
 
     constructor(private todoSerivce: TodoService, public authSerivce: AuthService, public userService: UserService) {
+        console.log("Constructor: AppComponent");
         authSerivce.handleAuthentication();
     }
 

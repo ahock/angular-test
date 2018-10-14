@@ -12,8 +12,38 @@
       <div class="card-body">
         <h3 class="card-title">Mastery Aktuell</h3>
         <p class="card-text">Es stehen ein paar aktuelle Masteries an. Diese sollten in den nächsten Tagen erledigt werden.</p>
+        
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Optionen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mast of user.getCurrentUser().getVerifications(); index as i">
+              <td><a href='{{ mast._id }}' data-toggle="tooltip" data-placement="top" title="Lernziel: {{ mast.learninggoal.name }}">{{ mast.name }}</a></td>
+              <td>
+                <img *ngIf="mast.options.start" src="../../client/img/open-iconic/media-play-3x.png" data-toggle="tooltip" data-placement="top" title="Starte direkt die Überprüfung"/>
+                <img *ngIf="mast.options.delay" src="../../client/img/open-iconic/media-pause-3x.png" />
+                <img *ngIf="mast.options.replay" src="../../client/img/open-iconic/reload-3x.png" />
+
+                <img *ngIf="mast.options.locked" src="../../client/img/open-iconic/lock-locked-3x.png"  data-toggle="tooltip" data-placement="top" title="Überprüfung wurde gesperrt"/>
+                <img *ngIf="!mast.options.locked" src="../../client/img/open-iconic/lock-unlocked-3x.png" />
+
+                <img *ngIf="mast.options.coach" src="../../client/img/open-iconic/person-3x.png"  data-toggle="tooltip" data-placement="top" title="Du kannst einen Coach zu Rate ziehen"/>
+                <img *ngIf="mast.options.group" src="../../client/img/open-iconic/people-3x.png"  data-toggle="tooltip" data-placement="top" title="Du kannst in einer Gruppe diskutieren"/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+<!--        
         <a class="btn btn-primary" routerLink="/user" routerLinkActive="active-link">Mastery durchführen</a>
         <a href="#" class="btn btn-primary">Kann noch nicht</a>
+-->        
+        
       </div>
     </div>
   </div>

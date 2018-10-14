@@ -17,21 +17,24 @@ var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
         this.users$ = new Subject_1.Subject();
-        console.log("UserService Constructor");
-        // this.loadUser("hh-hh-hh");
+        this.user = new user_1.User({ firstname: "Udo", lastname: "Unbekannt" });
+        console.log("Constructor UserService:", this.user);
+        if (this.user.reload) {
+            this.loadUser(this.user.getUserToken());
+        }
     }
     UserService.prototype.loadUser = function (token) {
         var _this = this;
         this.http.get("/api/0.0.1/user/get", { params: { UserToken: token } })
             .map(function (response) {
-            console.log("loadUser", response);
+            //                console.log("loadUser", response);
             console.log("loadUserJSON", response.json());
             //Create user object
             //this.user = new User(response.json);
             return response.json();
         })
             .map(function (list) {
-            console.log("List", list);
+            //                console.log("List", list);
             var userList = [];
             /*                for (let element of list) {
                                 console.log("Element", element);
@@ -39,7 +42,17 @@ var UserService = /** @class */ (function () {
                                     new User(element['auth_token'], element['email'])
                                 );
                             }*/
-            console.log("New User", list);
+            //                console.log("New User", list);
+            //                console.log("user Object:", this.user);
+            _this.user.firstname = list.firstname;
+            _this.user.lastname = list.lastname;
+            _this.user.masteries = list.masteries;
+            _this.user.email = list.email;
+            _this.user.goals = list.goals;
+            _this.user.groups = list.groups;
+            _this.user.last_login = list.last_login;
+            //                this.user.login_history = list.login_history;
+            console.log("Global user Object:", _this.user);
             userList.push(new user_1.User(list));
             return userList;
             //return list;
@@ -47,7 +60,7 @@ var UserService = /** @class */ (function () {
             .forEach(function (list) {
             _this.users$.next(list);
         });
-        //        console.log("New User", this.users$);                  
+        //        console.log("New User", this.users$); 
     };
     UserService.prototype.create = function (user) {
         this.http.put("/api/0.0.1/user/create", user_1.User)
@@ -61,8 +74,10 @@ var UserService = /** @class */ (function () {
         return this.users$;
     };
     UserService.prototype.getCurrentUser = function () {
-        console.log("getCurrentUser: ", this.user);
         return this.user;
+    };
+    UserService.prototype.isAuthenticated = function () {
+        return this.isAuthenticated;
     };
     UserService = __decorate([
         core_1.Injectable(),

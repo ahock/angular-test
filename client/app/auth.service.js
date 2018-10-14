@@ -34,7 +34,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.handleAuthentication = function () {
         var _this = this;
         this.auth0.parseHash(function (err, authResult) {
-            // console.log("authResult:", authResult);
+            console.log("authResult:", authResult);
             if (authResult && authResult.accessToken && authResult.idToken) {
                 _this.setSession(authResult);
                 console.log("Angemeldet als:", authResult.idTokenPayload.sub);
