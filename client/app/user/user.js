@@ -7,7 +7,7 @@ var User = /** @class */ (function () {
         this.newuser = true;
         this.masteries = [];
         this.groups = ["Guest"];
-        this.goals = ["Learn AIMY"];
+        this.eduobjectives = [];
         console.log("Constructor User: ", UserJSON);
         console.log("user_token", localStorage.getItem('user_token'));
         console.log("user_token", this.auth_token);
@@ -42,6 +42,9 @@ var User = /** @class */ (function () {
     };
     User.prototype.getVerifications = function () {
         return this.masteries;
+    };
+    User.prototype.getEduObjectives = function () {
+        return this.eduobjectives;
     };
     return User;
 }());

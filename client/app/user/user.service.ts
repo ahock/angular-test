@@ -44,7 +44,7 @@ export class UserService {
                 this.user.lastname = list.lastname;
                 this.user.masteries = list.masteries;
                 this.user.email = list.email;
-                this.user.goals = list.goals;
+                this.user.eduobjectives = list.eduobjectives;
                 this.user.groups = list.groups;
                 this.user.last_login = list.last_login;
 //                this.user.login_history = list.login_history;

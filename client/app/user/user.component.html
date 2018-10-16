@@ -80,7 +80,7 @@
         </table>
         
 
-    <h2>Nachweise</h2>
+    <h2>Kompetenznachweise</h2>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -100,7 +100,8 @@
           <tbody>
             <tr *ngFor="let mast of user.getCurrentUser().getVerifications(); index as i">
               <th scope="row">{{ i + 1 }}</th>
-              <td><a href='{{ mast._id }}'>{{ mast.name }}</a></td>
+<!--              <td><a href='{{ mast._id }}'>{{ mast.name }}</a></td>-->
+              <td><a class="nav-link" routerLink="/review/{{ mast._id }}" routerLinkActive="active-link">{{ mast.name }}</a></td>
               <td>{{ mast.learninggoal.type }}</td>
               <td>{{ mast.learninggoal.name }}</td>
               <td>{{ mast.modul }}</td>
@@ -155,9 +156,41 @@
     <h2>Lernfelder</h2>        
     <p>Ggf. impliziet über Lernziele</p>
 
-    <h2>Lernziele</h2>
+    <h2>Lernziele (educational objectives)</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+              <th scope="col">#</th>
+              <th scope="col">Lernfeld</th>
+              <th scope="col">Ziel</th>
+              <th scope="col">Selbsteinschätzung</th>
+              <th scope="col">Erfolgsbestätigung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let eobjective of user.getCurrentUser().getEduObjectives(); index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ eobjective.field }}</td>
+              <td><a class="nav-link" routerLink="/eduobjective/{{ eobjective.oid }}" routerLinkActive="active-link">{{ eobjective.name }}</a></td>
+              <td>{{ eobjective.selfassess }}</td>
+              <td>tbd</td>
+        </tr>
+      </tbody>
+    </table>    
+    
+    
+<!--    <ol>
+      <li *ngFor="let eobjective of user.getCurrentUser().getEduObjectives(); index as i">
+        {{ i + 1 }}
+        :&nbsp;
+        <a href='eduobjective/{{ eobjective.oid }}'>{{ eobjective.name }}</a>
+        :&nbsp;{{ eobjective.selfassess }}
+        :&nbsp;{{ eobjective.field }}
+      </li>
+    </ol>-->
 
+    <h1>...</h1>
         
-      </div>
-      <h4 *ngIf="!auth.isAuthenticated()">Nicht angemeldet</h4>
+    </div>
+    <h4 *ngIf="!auth.isAuthenticated()">Nicht angemeldet</h4>
 </div>          

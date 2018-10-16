@@ -11,7 +11,7 @@ export class User {
 
     public masteries: string[] = [];
     public groups: string[] = ["Guest"];
-    public goals: string[] = ["Learn AIMY"];
+    public eduobjectives: string[] = [];
 
     constructor(UserJSON: any ) {
         console.log("Constructor User: ", UserJSON);
@@ -51,5 +51,8 @@ export class User {
     }
     public getVerifications() {
         return this.masteries;
+    }
+    public getEduObjectives() {
+        return this.eduobjectives;
     }
 }

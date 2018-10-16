@@ -19,11 +19,12 @@ import { TodoService } from './todo/todo.service';
 import { AuthService } from './auth.service';
 import { UserService } from './user/user.service';
 import { ReviewService } from './review/review.service';
-
+import { EduObjectiveService } from './eduobjective/eduobjective.service';
+import { ChallengeService } from './challenge/challenge.service';
 import { CallbackComponent } from './callback/callback.component';
-
 import { ReviewComponent } from './review/review.component';
-
+import { EduObjectiveComponent } from './eduobjective/eduobjective.component';
+import { ChallengeComponent } from './challenge/challenge.component';
 
 @NgModule({
   imports: [ 
@@ -38,13 +39,17 @@ import { ReviewComponent } from './review/review.component';
     HomeComponent,
     UserComponent,
     GroupComponent,
-    ReviewComponent
+    ReviewComponent,
+    ChallengeComponent,
+    EduObjectiveComponent
   ],
   providers: [
     TodoService,
     AuthService,
     UserService,
     ReviewService,
+    ChallengeService,
+    EduObjectiveService,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],
   bootstrap: [ AppComponent ]

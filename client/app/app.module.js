@@ -22,8 +22,12 @@ var todo_service_1 = require("./todo/todo.service");
 var auth_service_1 = require("./auth.service");
 var user_service_1 = require("./user/user.service");
 var review_service_1 = require("./review/review.service");
+var eduobjective_service_1 = require("./eduobjective/eduobjective.service");
+var challenge_service_1 = require("./challenge/challenge.service");
 var callback_component_1 = require("./callback/callback.component");
 var review_component_1 = require("./review/review.component");
+var eduobjective_component_1 = require("./eduobjective/eduobjective.component");
+var challenge_component_1 = require("./challenge/challenge.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -41,13 +45,17 @@ var AppModule = /** @class */ (function () {
                 home_component_1.HomeComponent,
                 user_component_1.UserComponent,
                 group_component_1.GroupComponent,
-                review_component_1.ReviewComponent
+                review_component_1.ReviewComponent,
+                challenge_component_1.ChallengeComponent,
+                eduobjective_component_1.EduObjectiveComponent
             ],
             providers: [
                 todo_service_1.TodoService,
                 auth_service_1.AuthService,
                 user_service_1.UserService,
                 review_service_1.ReviewService,
+                challenge_service_1.ChallengeService,
+                eduobjective_service_1.EduObjectiveService,
                 { provide: common_1.APP_BASE_HREF, useValue: '/' }
             ],
             bootstrap: [app_component_1.AppComponent]

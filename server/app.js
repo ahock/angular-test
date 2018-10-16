@@ -114,10 +114,6 @@ var masteryData = new Schema({
     token: String,
     name: String,
     status: String
-    
-    
-    
-    
 });
 
 var userData = new Schema({
@@ -128,7 +124,7 @@ var userData = new Schema({
     last_login: Date,
     login_history: [String],
     groups: [String],
-    goals: [String],
+    eduobjectives: [{oid: String, name: String, selfassess: String, field: String}],
     masteries: [masteryData],
     lang: String
 },{collection: 'users'});
@@ -329,6 +325,39 @@ app.get("/api/0.0.1/review/list", function(req, res) {
 }); 
 
 // Review Ende ////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////
+//
+// Educational objective, Lernziel, ...
+//
+///////////////////////////////////////////////////////////////
+
+var eduobjectiveSchema = new Schema({
+    name: String,
+    lang: ['DE','EN','FR'],
+    type: ['Kennen','Können','Tuen'],
+    skillgoal: String,
+    field: String,
+    modul: String
+},{collection: 'eduobjectives'});
+
+const eduobjectiveModel = mongoose.model('EduObjective', eduobjectiveSchema);
+
+/*
+var EduObjective = new eduobjectiveModel({
+    name: "Ich kann Lernenden die Arbeitsweise und Vorteile näher bringen.",
+    lang: "DE",
+    type: "Tuen",
+    skillgoal: "Das Konzept von Aimy so verstehen, dass man es für sich selbst gewinnbringend anwenden kann und die Vorteile anderen erklärt werden können.",
+    modul: "Aimy für Lern- und Fachcoaches",
+    field: "Aimy",
+});
+console.log("EduObjective", EduObjective);
+
+EduObjective.save(function (err, EduObjective) {
+    if (err) return console.error(err);
+});
+*/
 
 ///////////////////////////////////////////////////////////////
 //

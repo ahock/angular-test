@@ -22,7 +22,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let mast of user.getCurrentUser().getVerifications(); index as i">
-              <td><a href='{{ mast._id }}' data-toggle="tooltip" data-placement="top" title="Lernziel: {{ mast.learninggoal.name }}">{{ mast.name }}</a></td>
+<!--              <td><a href='review/{{ mast._id }}' data-toggle="tooltip" data-placement="top" title="Lernziel: {{ mast.learninggoal.name }}">{{ mast.name }}</a></td>-->
+              <td><a class="nav-link" routerLink="/review/{{ mast._id }}" routerLinkActive="active-link">{{ mast.name }}</a></td>
               <td>
                 <img *ngIf="mast.options.start" src="../../client/img/open-iconic/media-play-3x.png" data-toggle="tooltip" data-placement="top" title="Starte direkt die Überprüfung"/>
                 <img *ngIf="mast.options.delay" src="../../client/img/open-iconic/media-pause-3x.png" />
@@ -68,7 +69,7 @@
             Mastery Aktuell
           </div>
           <div class="card-body">
-            <p>Aimy ermöglicht individualisiertes selbstgesteuertes Lernen. Du bestimmst das Tempo und übernimmst Verantwortung. Aimy unterstützt Dich vielfältig. Z.B. durch auf Dich abgestimmte Lernwege.</p>
+            <p>Aimy ist eine Capability/Competenz Management Plattform (Individual Competence Management Platform - ICMP) und ermöglicht individualisiertes selbstgesteuertes Lernen. Du bestimmst das Tempo und übernimmst Verantwortung. Aimy unterstützt Dich vielfältig. Z.B. durch auf Dich abgestimmte Lernwege.</p>
           </div>
         </div>
         
