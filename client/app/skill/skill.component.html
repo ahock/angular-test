@@ -1,0 +1,14 @@
+<div class="container">
+  <!-- Content here -->
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+<div class="container">
+  <div *ngIf="userS.isAuthenticated()">
+    <h1>Skills</h1>
+
+  </div>
+  <div *ngIf="!userS.isAuthenticated()">
+    <h2>Nicht angemeldet</h2>
+  </div>
+</div>

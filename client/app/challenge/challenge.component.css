@@ -1,0 +1,34 @@
+.challangelist {
+    background-color: White;
+    padding: 5px;
+}
+
+.challange {
+    border: solid 1px black; 
+    padding: 10px;
+}
+
+.ch_name {
+    color: Blue;
+    font-weight: bold;
+}
+
+.ch_menue {
+    width: 10%;
+}
+
+.hint {
+    border: solid 2px Blue; 
+    padding: 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.img1 {
+    width: 150px;
+    height: 150px;
+}
+
+.eolist {
+    margin-left: 0px;
+}

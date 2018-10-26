@@ -4,237 +4,223 @@
   <p>&nbsp;</p>
 </div>
 <div class="container">
-    <div *ngIf="userS.isAuthenticated()">
-        <div *ngIf="this.getRevId()!=undefined">
-<!--            <h1>{{ reviewS.review.getReviewName() }}</h1>-->
-            <h1>{{ userS.getCurrentUser().masteries[0].name }} ({{ this.getRevId() }})</h1>
-            <h2>Mein Status</h2>
-            <table class="table table-hover">
-<!--              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col">Wert</th>
-                </tr>
-              </thead>-->
-              <tbody>
-                <tr>
-                  <th scope="row">Status</th>
-                  <td class="indi">{{ userS.getCurrentUser().masteries[0].status }}</td>
-<!--                </tr>
-                <tr>-->
-                  <th scope="row">Id</th>
-                  <td class="stamm">{{ this.getRevId() }}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frühester Start</th>
-                  <td>10.08.2018 - 00:01 Uhr</td>
-<!--                </tr>
-                <tr>-->
-                  <th scope="row">Spätestes Ende</th>
-                  <td>20.08.2018 - 23:59 Uhr</td>
-                </tr>
-                <tr>
-                  <th scope="row">Start</th>
-                  <td>Gruppe (Individuel)</td>
-                  <th scope="row">Art</th>
-                  <td>Mastery (ATL/Selbstkontrolle)</td>
-                </tr>                  
-                <tr>
-                  <th scope="row">Begonnen</th>
-                  <td class="indi">17.08.2018 - 13:34 Uhr</td>
-                  <th scope="row">Abgeschlossen</th>
-                  <td class="indi">18.08.2018 - 16:34 Uhr</td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Resultat</th>
-                  <td class="indi">7/16&nbsp;
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="15" style="width: 44%"></div>
-                    </div>
-                  </td>
-                  <th scope="row">Einheit</th>
-                  <td class="stamm">LLP, 16 LLP max</td>
-                </tr>
-                <tr>
-                  <th scope="row">Optionen</th>
-                  <td class="indi">
-                    <img *ngIf="true" src="../../client/img/open-iconic/media-play-2x.png" />
-                    <img *ngIf="true" src="../../client/img/open-iconic/media-pause-2x.png" />
-                    <img *ngIf="true" src="../../client/img/open-iconic/reload-2x.png" />
+  <div *ngIf="userS.isAuthenticated()">
     
-                    <img *ngIf="true" src="../../client/img/open-iconic/lock-locked-2x.png" />
-                    <img *ngIf="true" src="../../client/img/open-iconic/lock-unlocked-2x.png" />
-    
-                    <img *ngIf="true" src="../../client/img/open-iconic/person-2x.png" />
-                    <img *ngIf="true" src="../../client/img/open-iconic/people-2x.png" />
-                  </td>            
-                </tr>
-                
-                <tr>
-                  <th scope="row">Autor</th>
-                  <td class="stamm">Andreas Hock</td>
-                  <th scope="row">Co-Autor</th>
-                  <td class="stamm">n/a</td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Coach</th>
-                  <td class="stamm">Andreas Hock</td>
-                  <th scope="row">Gruppe</th>
-                  <td class="stamm">Aimy-Neueinsteiger 2018</td>
-                </tr>
-                
-                
-              </tbody>
-            </table>  
-            <h2>Beschreibung</h2>
-            <p>Allgemeine Beschreibung mit Modi, u.s.w.</p>
-            <h2>Lernziele</h2>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Lernziel</th>
-                  <th scope="col">Art</th>
-                  <th scope="col">Selbsteinschätzung</th>
-                  <th scope="col">Resultat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Ich kenne die Aimy-speziefischen Begriffe und ihre Bedeutung.</td>
-                  <td>Kennen</td>
-                  <td>
-                    <select size="1">
-                      <option value="1" selected>Sehr gut</option>
-                      <option value="2">Gut</option>
-                      <option value="3">Weniger</option>
-                      <option value="4">Noch garnicht</option>
-                    </select>
-                  </td>
-                  <td>2/3</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Ich verstehe das Konzept hinter Microlearing und kann die Vorteile erklären.</td>
-                  <td>Können</td>
-                  <td>
-                    <select size="1">
-                      <option value="1">Sehr gut</option>
-                      <option value="2" selected>Gut</option>
-                      <option value="3">Weniger</option>
-                      <option value="4">Noch garnicht</option>
-                    </select>
-                  </td>
-                  <td>1/3</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Ich weiss, was Lernpfade sind und warum diese im individuellen Lernen wirchtig sind.</td>
-                  <td>Kennen</td>
-                  <td>
-                    <select size="1">
-                      <option value="1">Sehr gut</option>
-                      <option value="2">Gut</option>
-                      <option value="3" selected>Weniger</option>
-                      <option value="4">Noch garnicht</option>
-                    </select>
-                  </td>
-                  <td>1/3</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Ich weiss, warum der individuelle Lerntyp bestimmt werden muss und welche Rolle dieser bei Aimy spielt.</td>
-                  <td>Kennen</td>
-                  <td>
-                    <select size="1">
-                      <option value="1">Sehr gut</option>
-                      <option value="2">Gut</option>
-                      <option value="3">Weniger</option>
-                      <option value="4" selected>Noch garnicht</option>
-                    </select>
-                  </td>
-                  <td>1/4</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Ich kann Lernenden die Arbeitsweise und Vorteile näher bringen.</td>
-                  <td>Tuen</td>
-                  <td>
-                    <select size="1">
-                      <option value="1">Sehr gut</option>
-                      <option value="2" selected>Gut</option>
-                      <option value="3">Weniger</option>
-                      <option value="4">Noch garnicht</option>
-                    </select>
-                  </td>
-                  <td>2/3</td>
-                </tr>
-              </tbody>
-            </table>    
-            <h2>Lernfeld/Modul</h2>
-            <p>Aimy für Lern- und Fachcoaches</p>
-            <h2>Kompetenzziel</h2>
-            <p>Das Konzept von Aimy so verstehen, dass man es für sich selbst gewinnbringend anwenden kann und die Vorteile anderen erklärt werden können.</p>
-            <h2>Challenge, Aufgabe, Frage</h2>
-            <p>Angaben zu den konkreten Fragen/Aufgaben in dieser Kompetenzkontrolle.</p>
+    <div *ngIf="this.compfunction=='start review with first challenge'">
+      <h1>{{ this.reviewData.name }}</h1>
+      <div *ngIf="this.showWarning" class="alert alert-warning" role="alert" id="collapseExample">
+        
+<!--         
+        <div *ngFor="let ch_id of this.reviewData.challenges; index as i">
+          [{{ i }}] {{ ch_id }}
         </div>
-        <div *ngIf="this.getRevId()==undefined">
-          <h1>Kompetenznachweise</h1>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Art</th>
-                  
-                  <th scope="col">Zu Lernziel</th>
-                  <th scope="col">Zu Lernfeld</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Begonnen</th>
-                  <th scope="col">Abgeschlossen</th>
-                  <th scope="col">Resultat</th>
-                  <th scope="col">Optionen</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let mast of userS.getCurrentUser().getVerifications(); index as i">
-                  <th scope="row">{{ i + 1 }}</th>
-    <!--              <td><a href='{{ mast._id }}'>{{ mast.name }}</a></td>-->
-                  <td><a class="nav-link" routerLink="/review/{{ mast._id }}" routerLinkActive="active-link">{{ mast.name }}</a></td>
-                  <td>{{ mast.learninggoal.type }}</td>
-                  <td>{{ mast.learninggoal.name }}</td>
-                  <td>{{ mast.modul }}</td>
-                  <td>{{ mast.status }}</td>
-                  <td>10.08.2018</td>
-                  <td>17.09.2018</td>
-    
-                  <td>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="15" style="width: 50%"></div>
+        <p>{{ this.reviewData.challenges.length }} Fragen in diesem Review</p>
+        
+        <p>{{ this.challengeS.challenge.length }} Fragen in diesem Review</p>
+        <div *ngFor="let ch of this.challengeS.challenge; index as i">
+          [{{ i }}] {{ ch.name }} {{ ch.type }} {{ ch.eduobjectives.length }}
+        </div>
+-->     
+
+        <div><p>{{ this.reviewData.description }}</p></div>
+
+        <h2>Vor dem Start dieser Challenge</h2>
+        <p>Bitte nimm Dir kurz Zeit und lasse mich wissen, wie Du Dich heute fühlst.</p>
+        <img src="../../client/img/VitruvianischeMensch.gif" class="img1"/>
+        <h3>Körperlich</h3>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="physical" id="exampleRadios0" value="option0" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Ich möchte hierzu heute keine Angabe machen.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="physical" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              Ich fühle mich körperlich top-fit heuet.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="physical" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              Ich fühle mich körperlich etwas ermüdet, aber im normalen Bereich.
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="physical" id="exampleRadios3" value="option3">
+            <label class="form-check-label" for="exampleRadios3">
+              Heute bin ich körperlich total kaput.
+            </label>
+          </div>
+        <h3>Mental</h3>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="mental" id="exampleRadios1" value="option0" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Ich möchte hierzu heute keine Angabe machen.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="mental" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              Ich fühle mich dem gewachsen, ggf. sogar überlegen.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="mental" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              Ich habe Respekt vor dem was kommt, sehe ihm aber gelassen entgegen.
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="mental" id="exampleRadios3" value="option3">
+            <label class="form-check-label" for="exampleRadios3">
+              Ich habe Angst vor dem was kommt.
+            </label>
+          </div>
+        <h3>Vorbereitet</h3>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="prep" id="exampleRadios1" value="option0" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Ich möchte hierzu heute keine Angabe machen.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="prep" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              Ich bin sehr gut vorbereitet.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="prep" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              Ich habe wenig oder das Nötigste vorbereitet.
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="prep" id="exampleRadios3" value="option3">
+            <label class="form-check-label" for="exampleRadios3">
+              Eigentlich habe ich mich gar nicht vorbereitet.
+            </label>
+          </div>
+        
+        <p>&nbsp;</p>
+        <button type="button" class="btn btn-primary" (click)="this.showWarning=false">Ok</button>
+      </div>
+      
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary"><<</button>
+        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" (click)="this.showWarning=true">Infos</button>
+        <button type="button" class="btn btn-secondary">Gemerkt</button>
+        <button type="button" class="btn btn-secondary">Mehr Zeit</button>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Mehr Zeit
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="#">+ 1 Minute</a>
+            <a class="dropdown-item" href="#">+ 5 Minuten</a>
+            <a class="dropdown-item" href="#">+ 10 Minuten</a>
+          </div>
+        </div>        
+        <button type="button" class="btn btn-primary">Fertig</button>
+        <button type="button" class="btn btn-secondary">>></button>
+      </div>
+      
+      <div class="challangelist">
+        <div *ngFor="let ch of this.challengeS.challenge; index as i" class="challange">
+          <table width="100%">
+            <tr>
+              <td>
+                <div class="ch_name">{{ ch.name }}</div>
+                <div [innerHTML]="ch.text"></div>
+                <div [ngSwitch]="ch.type">
+                  <div *ngSwitchCase="'multi'">
+                    <div class="form-check" *ngFor="let an of ch.answers; index as j">
+                      <input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios{{ i }}{{ j }}" value="{{ j }}">
+                      <label class="form-check-label" for="gridRadios{{ i }}{{ j }}">  
+                        {{ an }}
+                      </label>
+                    </div>                    
+                  </div>
+                  <div *ngSwitchCase="'single'">
+                    <div class="form-check" *ngFor="let an of ch.answers; index as j">
+                      <input class="form-check-input" type="radio" name="challenge{{ i }}" id="gridRadios{{ i }}{{ j }}" value="{{ j }}">
+                      <label class="form-check-label" for="gridRadios{{ i }}{{ j }}">
+                        {{ an }}
+                      </label>
                     </div>
-                  </td>
-            
-                  <td>
-                    <img *ngIf="mast.options.start" src="../../client/img/open-iconic/media-play-2x.png" />
-                    <img *ngIf="mast.options.delay" src="../../client/img/open-iconic/media-pause-2x.png" />
-                    <img *ngIf="mast.options.replay" src="../../client/img/open-iconic/reload-2x.png" />
-    
+                  </div>
+                </div>
+                <div *ngIf="this.showHint==i" class="hint">
+                  <div [innerHTML]="ch.hint"></div>
+                  <div *ngIf="ch.eduobjectives!=undefined&&ch.eduobjectives.length<2" class="ch_name">Lernziel</div>
+                  <div *ngIf="ch.eduobjectives!=undefined&&ch.eduobjectives.length>=2" class="ch_name">Lernziele</div>
+                  <div *ngFor="let eo of ch.eduobjectives" class="eolist">
+                  <a class="nav-link" routerLink="/eduobjective/{{ eo._id }}" routerLinkActive="active-link">{{ eo.name }}</a>
+                  </div>
+                </div>
+              </td>
+              <td class="ch_menue">
+                <button id="{{ i }}" type="button" class="btn btn-outline-primary btn-sm btn-block" (click)="this.markChallenge(i)">Merken</button><br />
+                <button id="{{ i }}" type="button" class="btn btn-outline-secondary btn-sm btn-block" (click)="this.toggleHint($event, i)">Hinweis</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <h1>...</h1>
+    <div *ngIf="this.compfunction=='default'">
+      <div *ngIf="this.showWarning" class="alert alert-warning" role="alert">
+        <p>Keine Challenge aktiv</p>
+        <p>Bitte wählen Sie eine Funktion zu einem Review.</p>
+        <button type="button" class="btn btn-primary" (click)="this.showWarning=false">Ok</button>
+      </div>
+      <h1>Meine aktiven Reviews</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Modul</th>
+            <th scope="col">Status</th>
+            <th scope="col">Beginn</th>
+            <th scope="col">Ende</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mast of userS.getCurrentUser().getVerifications(); index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td><a class="nav-link" routerLink="/review/{{ mast._id }}" routerLinkActive="active-link">{{ mast.name }}</a></td>
+            <td>{{ mast.modul }}</td>
+            <td>{{ mast.status }}</td>
+            <td>17.10.2018 - 18:00</td>
+            <td>17.10.2018 - 19:00</td>
+            <td>
+              <div [ngSwitch]="mast.status">
+                <img *ngSwitchCase="'open'" src="../../client/img/open-iconic/media-play-2x.png" />
+                <img *ngSwitchCase="'active'" src="../../client/img/open-iconic/media-pause-2x.png" />
+                <img *ngSwitchCase="'done'" src="../../client/img/open-iconic/reload-2x.png" />
+                <a class="nav-link" routerLink="/challenge/rid/{{ mast._id }}" routerLinkActive="active-link"><img *ngSwitchCase="'active'" src="../../client/img/open-iconic/play-circle-2x.png" /></a>
+                <img *ngSwitchCase="'paused'" src="../../client/img/open-iconic/media-play-2x.png" />
+              </div>
+              
+<!--
                     <img *ngIf="mast.options.locked" src="../../client/img/open-iconic/lock-locked-2x.png" />
                     <img *ngIf="!mast.options.locked" src="../../client/img/open-iconic/lock-unlocked-2x.png" />
     
                     <img *ngIf="mast.options.coach" src="../../client/img/open-iconic/person-2x.png" />
                     <img *ngIf="mast.options.group" src="../../client/img/open-iconic/people-2x.png" />
-                  </td>
-    
-                </tr>
-              </tbody>
-            </table>    
-        </div>
+-->
+            </td>
+          </tr>
+        </tbody>
+      </table>    
     </div>
-    <div *ngIf="!userS.isAuthenticated()">
-        <h2>Nicht angemeldet</h2>
-    </div>
+  </div>
+  <div *ngIf="!userS.isAuthenticated()">
+    <h2>Nicht angemeldet</h2>
+  </div>
 </div>
