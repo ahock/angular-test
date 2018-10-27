@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
 -->        
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-
+        <script src="client/js/jquery.min.js"></script>
         <!-- Polyfill(s) for older browsers -->
         <script src="node_modules/core-js/client/shim.min.js"></script>
 
@@ -32,6 +32,7 @@
             /*global System*/
             System.import('app').catch(function(err){ console.error(err); });
         </script>
+        
     </head>
     <body>
         <todo-app></todo-app>

@@ -4,12 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import { User } from './user';
+import { ReviewResult } from './user';
 
 @Injectable()
 export class UserService {
     public users$: Subject<User[]> = new Subject();
     
     public user: User;
+    public res: ReviewResult;
+
 
     constructor(private http: Http ) {
         this.user = new User({firstname: "Udo", lastname: "Unbekannt"});
@@ -76,5 +79,30 @@ export class UserService {
     }
     public isAuthenticated() {
         return this.isAuthenticated;
+    }
+    
+    public getResult(rid: string) : ReviewResult {
+        ////////////////////////
+        // old result
+        // this review not done
+        // never done a review
+        ////////////////////////
+        this.res = new ReviewResult;
+        
+        if(this.user.masteries!=undefined) {
+            var n: number = -1;
+            do { 
+               n++;
+            } while(n<this.user.masteries.length && rid!=this.user.masteries[n]['_id']);
+//            console.log("getResult:", n, this.user.masteries.length);
+            if(n>=this.user.masteries.length) {
+                console.log("getResult: not done this review yet", n, rid);
+            } else {
+                console.log("getResult:", rid, n, this.user.masteries[n]['_id']);
+            }
+        } else {
+            console.log("getResult: first review ever");
+        }
+        return this.res;
     }
 }

@@ -20,14 +20,14 @@ var ReviewComponent = /** @class */ (function () {
         this.reviewS = reviewS;
         this.route = route;
         this.route.params.subscribe(function (params) { return _this.showParams(params); });
-        //params => console.log(params)
     }
     ReviewComponent.prototype.ngOnInit = function () {
         console.log("ReviewComponentInit:", this.reviewS, this.userS);
     };
     ReviewComponent.prototype.showParams = function (par) {
         this.rev_id = par.id;
-        console.log("Parameter", par, this.rev_id);
+        this.reviewData = this.reviewS.getReview(par.id);
+        console.log("Parameter", par.id, this.reviewData);
     };
     ReviewComponent.prototype.getRevId = function () {
         return this.rev_id;

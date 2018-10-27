@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Subject_1 = require("rxjs/Subject");
 var user_1 = require("./user");
+var user_2 = require("./user");
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
@@ -78,6 +79,31 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.isAuthenticated = function () {
         return this.isAuthenticated;
+    };
+    UserService.prototype.getResult = function (rid) {
+        ////////////////////////
+        // old result
+        // this review not done
+        // never done a review
+        ////////////////////////
+        this.res = new user_2.ReviewResult;
+        if (this.user.masteries != undefined) {
+            var n = -1;
+            do {
+                n++;
+            } while (n < this.user.masteries.length && rid != this.user.masteries[n]['_id']);
+            //            console.log("getResult:", n, this.user.masteries.length);
+            if (n >= this.user.masteries.length) {
+                console.log("getResult: not done this review yet", n, rid);
+            }
+            else {
+                console.log("getResult:", rid, n, this.user.masteries[n]['_id']);
+            }
+        }
+        else {
+            console.log("getResult: first review ever");
+        }
+        return this.res;
     };
     UserService = __decorate([
         core_1.Injectable(),

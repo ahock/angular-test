@@ -320,7 +320,7 @@ app.get("/api/0.0.1/review/get", function(req, res) {
 app.get("/api/0.0.1/review/list", function(req, res) {
     ///// List with all users
 
-    console.log("reviewList from memory:", reviewList);
+//    console.log("reviewList from memory:", reviewList);
     res.send(reviewList);
 }); 
 
@@ -359,40 +359,146 @@ EduObjective.save(function (err, EduObjective) {
 });
 */
 
+var eduobjectiveList = [];
+
+eduobjectiveModel.find(function (err, eo) {
+  if (err) return console.error(err);
+  eduobjectiveList = eo;
+  console.log("Anzahl Lernziele geladen:", eduobjectiveList.length);
+  // console.log("userList aus MongoDB:", userList);
+});
+
+app.get("/api/0.0.1/objective/list", function(req, res) {
+    ///// List with all users
+
+//    console.log("reviewList from memory:", reviewList);
+    res.send(eduobjectiveList);
+});
+
+app.get("/api/0.0.1/objective/get", function(req, res) {
+    // Parameter
+    //  id
+    //
+    var returnList = [];
+    
+    
+    console.log("/api/0.0.1/objective/get");
+    // Log Device parameter
+    
+//    console.log("id", req.query.id);
+    
+    let idres = JSON.parse(req.query.id);
+//    console.log("id", idres, typeof idres);
+    
+    ///// Search for user with this token
+    var ok = false;
+    for(var i = 0; i<eduobjectiveList.length;i++) {
+//        console.log("id",challengeList[i]._id);
+        for(var j = 0; j<idres.length;j++) {
+//            console.log(":",challengeList[i]._id, idres[j]);
+            if(eduobjectiveList[i]._id == idres[j]) {
+                console.log("Match:",idres[j], eduobjectiveList[i].name);
+                returnList.push(eduobjectiveList[i]);
+                ok = true;
+            }
+        }
+    }
+    if(ok) {
+//        console.log("Challenges:");
+        res.send(returnList);
+    }
+    else {
+        console.log("No eduobjective found!");
+        res.send({success: false, error: "no such objective"});
+    }
+});
+
 ///////////////////////////////////////////////////////////////
 //
 // Challenge, Aufgabe, Frage, ...
 //
 ///////////////////////////////////////////////////////////////
 
-/*
-var verificationSchema = new Schema({
-
+var challengeSchema = new Schema({
     name: String,
-    status: ['upcoming',open','done'],
-    type: ['Mastery','ATL','Verify'],
-    modul: "Learning with Aimy",
-    learninggoal: [{
-        name: String
-    }],
-    autor: String,
-    options: {
-        start: boolean,
-        replay: boolean,
-        delay: boolean,
-        locked: boolean,
-        coach: boolean
-    },
-    group
-    result: {}
-    "resultpro": "width: 25%",
-    tasks: [taskSchema]
+    lang: ['DE','EN','FR'],
+    type: ['Kennen','Können','Tuen'],
+    field: String,
+    eduobjectives: [eduobjectiveSchema]
+},{collection: 'challenges'});
+
+const challengeModel = mongoose.model('Challenge', challengeSchema);
+
+
+/*
+var Challenge = new challengeModel({
+    name: "Wei unterscheidet sich Microlearning von konventionellen Lernmethoden?",
+    lang: "DE",
+    type: "Kennen",
+    field: "Aimy",
+    eduobjectives: [
+    {
+                "oid": "5bc45c41aae9c9384dd39231",
+                "name": "Ich verstehe das Konzept hinter Microlearing und kann die Vorteile erklären."
+    }]
+});
+
+console.log("ChallengeObjective", Challenge);
+
+Challenge.save(function (err, Challenge) {
+    if (err) return console.error(err);
+});
 */
 
+var challengeList = [];
+
+challengeModel.find(function (err, challenge) {
+  if (err) return console.error(err);
+  challengeList = challenge;
+  console.log("Anzahl Challenges geladen:", challengeList.length);
+  // console.log("userList aus MongoDB:", userList);
+});
+
+app.get("/api/0.0.1/challenge/get", function(req, res) {
+    // Parameter
+    //  id
+    //
+    var returnList = [];
+    
+    
+    console.log("/api/0.0.1/challenge/get");
+    // Log Device parameter
+    
+//    console.log("id", req.query.id);
+    
+    let idres = JSON.parse(req.query.id);
+//    console.log("id", idres, typeof idres);
+    
+    ///// Search for user with this token
+    var ok = false;
+    for(var i = 0; i<challengeList.length;i++) {
+//        console.log("id",challengeList[i]._id);
+        for(var j = 0; j<idres.length;j++) {
+//            console.log(":",challengeList[i]._id, idres[j]);
+            if(challengeList[i]._id == idres[j]) {
+                console.log("Match:",idres[j], challengeList[i].name);
+                returnList.push(challengeList[i]);
+                ok = true;
+            }
+        }
+    }
+    if(ok) {
+//        console.log("Challenges:");
+        res.send(returnList);
+    }
+    else {
+        console.log("No challenge found!");
+        res.send({success: false, error: "no such challenge"});
+    }
+});
+
+
 // Challenge Ende ////////////////////////////////////////////////////////
-
-
-
 
 app.get("/callback", function(req, res) {
     res.status(200).redirect("/");

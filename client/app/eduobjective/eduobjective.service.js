@@ -17,8 +17,20 @@ var EduObjectiveService = /** @class */ (function () {
     function EduObjectiveService(http) {
         this.http = http;
         this.eduobjective = new eduobjective_1.EduObjective();
-        console.log("Constructor ReviewService:", this.eduobjective);
+        this.loadEduobjectives();
+        console.log("Constructor EduObjectiveService:", this.eduobjective);
     }
+    EduObjectiveService.prototype.loadEduobjectives = function () {
+        var _this = this;
+        this.http
+            .get("/api/0.0.1/objective/list")
+            .map(function (response) { return response.json(); })
+            .subscribe(function (data) {
+            _this.eduobjective = data;
+            console.log("loadEduObjectives", _this.eduobjective);
+        });
+        return this.eduobjective;
+    };
     EduObjectiveService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])

@@ -11,9 +11,19 @@ export class EduObjectiveService {
     public eduobjective: EduObjective;
 
     constructor(private http: Http ) {
-        
         this.eduobjective = new EduObjective();
-        console.log("Constructor ReviewService:", this.eduobjective);
-
+        this.loadEduobjectives();
+        console.log("Constructor EduObjectiveService:", this.eduobjective);
     }
+    
+    public loadEduobjectives(){
+        this.http
+            .get("/api/0.0.1/objective/list")
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+                this.eduobjective = data;
+                console.log("loadEduObjectives", this.eduobjective);
+            });
+        return this.eduobjective;
+    }    
 }

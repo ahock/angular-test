@@ -13,8 +13,9 @@ import { EduObjectiveService } from './eduobjective.service';
 export class EduObjectiveComponent implements OnInit {
   
   public rev_id: string;
+  public eduolist: any;
 
-  constructor(public userS: UserService, public reviewS: ReviewService, private route: ActivatedRoute) {
+  constructor(public userS: UserService, public reviewS: ReviewService, public eduoS: EduObjectiveService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.showParams(params));
     
     
@@ -24,11 +25,13 @@ export class EduObjectiveComponent implements OnInit {
 
   ngOnInit() {
     console.log("ReviewComponentInit:", this.reviewS, this.userS);
+    
   }
   
   public showParams(par: any) {
     this.rev_id = par.id;
-    console.log("Parameter", par, this.rev_id);
+    this.eduolist = this.eduoS.loadEduobjectives();
+    console.log("Parameter", par, this.rev_id, this.eduolist);
   }
   public getRevId() {
     return this.rev_id;

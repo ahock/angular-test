@@ -21,10 +21,12 @@ import { UserService } from './user/user.service';
 import { ReviewService } from './review/review.service';
 import { EduObjectiveService } from './eduobjective/eduobjective.service';
 import { ChallengeService } from './challenge/challenge.service';
+import { SkillService } from './skill/skill.service';
 import { CallbackComponent } from './callback/callback.component';
 import { ReviewComponent } from './review/review.component';
 import { EduObjectiveComponent } from './eduobjective/eduobjective.component';
 import { ChallengeComponent } from './challenge/challenge.component';
+import { SkillComponent } from './skill/skill.component';
 
 @NgModule({
   imports: [ 
@@ -41,6 +43,7 @@ import { ChallengeComponent } from './challenge/challenge.component';
     GroupComponent,
     ReviewComponent,
     ChallengeComponent,
+    SkillComponent,
     EduObjectiveComponent
   ],
   providers: [
@@ -49,6 +52,7 @@ import { ChallengeComponent } from './challenge/challenge.component';
     UserService,
     ReviewService,
     ChallengeService,
+    SkillService,
     EduObjectiveService,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],

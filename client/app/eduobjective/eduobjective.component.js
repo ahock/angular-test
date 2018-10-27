@@ -13,11 +13,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var review_service_1 = require("./../review/review.service");
 var user_service_1 = require("./../user/user.service");
+var eduobjective_service_1 = require("./eduobjective.service");
 var EduObjectiveComponent = /** @class */ (function () {
-    function EduObjectiveComponent(userS, reviewS, route) {
+    function EduObjectiveComponent(userS, reviewS, eduoS, route) {
         var _this = this;
         this.userS = userS;
         this.reviewS = reviewS;
+        this.eduoS = eduoS;
         this.route = route;
         this.route.params.subscribe(function (params) { return _this.showParams(params); });
         //params => console.log(params)
@@ -27,7 +29,8 @@ var EduObjectiveComponent = /** @class */ (function () {
     };
     EduObjectiveComponent.prototype.showParams = function (par) {
         this.rev_id = par.id;
-        console.log("Parameter", par, this.rev_id);
+        this.eduolist = this.eduoS.loadEduobjectives();
+        console.log("Parameter", par, this.rev_id, this.eduolist);
     };
     EduObjectiveComponent.prototype.getRevId = function () {
         return this.rev_id;
@@ -38,7 +41,7 @@ var EduObjectiveComponent = /** @class */ (function () {
             templateUrl: 'client/app/eduobjective/eduobjective.component.html',
             styleUrls: ['client/app/eduobjective/eduobjective.component.css']
         }),
-        __metadata("design:paramtypes", [user_service_1.UserService, review_service_1.ReviewService, router_1.ActivatedRoute])
+        __metadata("design:paramtypes", [user_service_1.UserService, review_service_1.ReviewService, eduobjective_service_1.EduObjectiveService, router_1.ActivatedRoute])
     ], EduObjectiveComponent);
     return EduObjectiveComponent;
 }());

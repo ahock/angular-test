@@ -5,6 +5,10 @@
 </div>
 <div class="container">
   <div *ngIf="userS.isAuthenticated()">
+    
+    
+    <p>{{ this.eduobjective.length }}</p>
+    
     <h1>Lernziele</h1>
     <div>
 
@@ -125,13 +129,66 @@
             <td>Begleitunterlagen Event 6 UNTF</td>
           </tr>
         </tbody>
-
-
       </table>
+
+      <h2 class="indi">Ich behersche meine Möglichkeiten, um Aufschieben zu vermeiden.</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Art</th>
+            <th scope="col">Selbsteinschätzung</th>
+            <th scope="col">Erfolgsbestätigung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">Tuen</td>
+            <td scope="row">Nach garnicht</td>
+            <td scope="row">16%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Lernfeld/Modul</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time Management</td>
+          </tr>
+          <tr>
+            <td>Pers. Zeitmanagement</td>
+          </tr>
+        </tbody>
+
+        <thead>
+          <tr>
+            <th scope="col">Kontrolle in Review</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="stamm"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">Wie ich Aufschieberitis bekämfe</a></td>
+          </tr>
+        </tbody>
+
+        <thead>
+          <tr>
+            <th scope="col">Vermittelt in</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.linkedin.com/learning/time-management-tips-weekly/fight-negative-procrastination" target="video">inLearning-Video von Dave Crenshaw [EN]</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+
       <h1>...</h1>
-      
-      
-      
     </div>
   </div>
 <div *ngIf="!userS.isAuthenticated()">

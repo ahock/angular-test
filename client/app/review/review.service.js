@@ -18,7 +18,49 @@ var ReviewService = /** @class */ (function () {
         this.http = http;
         this.review = new review_1.Review();
         console.log("Constructor ReviewService:", this.review);
+        this.loadReviews();
     }
+    ReviewService.prototype.loadReviews = function () {
+        var _this = this;
+        this.http
+            .get("/api/0.0.1/review/list", { params: { UserToken: "vvv" } })
+            .map(function (response) { return response.json(); })
+            .subscribe(function (data) {
+            _this.reviewlist = data;
+            console.log("reviewlist loaded", _this.reviewlist);
+        });
+    };
+    ReviewService.prototype.getReviewList = function () {
+        return this.reviewlist;
+    };
+    ReviewService.prototype.getIsoDate = function (date_in) {
+        var date_out = new Date(date_in);
+        return date_out.toISOString;
+    };
+    ReviewService.prototype.isStartable = function (rid) {
+        //
+        // Check if review can be startet
+        //
+        return true;
+    };
+    ReviewService.prototype.getFirstChallenge = function (rid) {
+        return "1234567890";
+    };
+    ReviewService.prototype.getReview = function (rid) {
+        console.log("getReview:", rid);
+        if (rid != undefined) {
+            for (var i = 0; i < this.reviewlist.length; i++) {
+                console.log("getReview:", this.reviewlist[i]._id);
+                if (rid == this.reviewlist[i]._id) {
+                    console.log("getReview:", this.reviewlist[i]);
+                    return this.reviewlist[i];
+                }
+            }
+        }
+        else {
+            return undefined;
+        }
+    };
     ReviewService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])

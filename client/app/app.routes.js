@@ -7,6 +7,7 @@ var callback_component_1 = require("./callback/callback.component");
 var review_component_1 = require("./review/review.component");
 var eduobjective_component_1 = require("./eduobjective/eduobjective.component");
 var challenge_component_1 = require("./challenge/challenge.component");
+var skill_component_1 = require("./skill/skill.component");
 exports.ROUTES = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'user', component: user_component_1.UserComponent },
@@ -15,7 +16,10 @@ exports.ROUTES = [
     { path: 'review/:id', component: review_component_1.ReviewComponent },
     { path: 'eduobjective', component: eduobjective_component_1.EduObjectiveComponent },
     { path: 'eduobjective/:id', component: eduobjective_component_1.EduObjectiveComponent },
+    { path: 'challenge', component: challenge_component_1.ChallengeComponent },
     { path: 'challenge/:id', component: challenge_component_1.ChallengeComponent },
+    { path: 'challenge/rid/:rid', component: challenge_component_1.ChallengeComponent },
+    { path: 'skill', component: skill_component_1.SkillComponent },
     { path: 'callback', component: callback_component_1.CallbackComponent },
     { path: '**', redirectTo: '' }
 ];

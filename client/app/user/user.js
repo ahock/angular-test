@@ -49,4 +49,11 @@ var User = /** @class */ (function () {
     return User;
 }());
 exports.User = User;
+var ReviewResult = /** @class */ (function () {
+    function ReviewResult() {
+        this.marked = [];
+    }
+    return ReviewResult;
+}());
+exports.ReviewResult = ReviewResult;
 //# sourceMappingURL=user.js.map

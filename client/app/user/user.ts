@@ -56,3 +56,11 @@ export class User {
         return this.eduobjectives;
     }
 }
+
+export class ReviewResult {
+    public marked: number[];
+    
+    constructor() {
+        this.marked = [];
+    }
+}

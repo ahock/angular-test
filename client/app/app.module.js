@@ -24,10 +24,12 @@ var user_service_1 = require("./user/user.service");
 var review_service_1 = require("./review/review.service");
 var eduobjective_service_1 = require("./eduobjective/eduobjective.service");
 var challenge_service_1 = require("./challenge/challenge.service");
+var skill_service_1 = require("./skill/skill.service");
 var callback_component_1 = require("./callback/callback.component");
 var review_component_1 = require("./review/review.component");
 var eduobjective_component_1 = require("./eduobjective/eduobjective.component");
 var challenge_component_1 = require("./challenge/challenge.component");
+var skill_component_1 = require("./skill/skill.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -47,6 +49,7 @@ var AppModule = /** @class */ (function () {
                 group_component_1.GroupComponent,
                 review_component_1.ReviewComponent,
                 challenge_component_1.ChallengeComponent,
+                skill_component_1.SkillComponent,
                 eduobjective_component_1.EduObjectiveComponent
             ],
             providers: [
@@ -55,6 +58,7 @@ var AppModule = /** @class */ (function () {
                 user_service_1.UserService,
                 review_service_1.ReviewService,
                 challenge_service_1.ChallengeService,
+                skill_service_1.SkillService,
                 eduobjective_service_1.EduObjectiveService,
                 { provide: common_1.APP_BASE_HREF, useValue: '/' }
             ],
