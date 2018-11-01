@@ -15,6 +15,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://iod.eu.auth0.com/userinfo',
     redirectUri: 'http://angular-test-dswi.c9users.io:8080/callback',
+//    redirectUri: 'https://ea1cbc842df248abb957f2bbb70d6da5.vfs.cloud9.eu-west-1.amazonaws.com/callback',
     scope: 'openid profile'
   });
 
