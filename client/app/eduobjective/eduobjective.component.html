@@ -5,191 +5,148 @@
 </div>
 <div class="container">
   <div *ngIf="userS.isAuthenticated()">
-    
-    
-    <p>{{ this.eduobjective.length }}</p>
-    
     <h1>Lernziele</h1>
-    <div>
 
-      <h2 class="indi">Ich kenne die Aimy-speziefischen Begriffe und ihre Bedeutung.</h2>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Art</th>
-            <th scope="col">Selbsteinschätzung</th>
-            <th scope="col">Erfolgsbestätigung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">Kennen</td>
-            <td scope="row">Gut</td>
-            <td scope="row">83%</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Lernfeld/Modul</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Aimy</td>
-          </tr>
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">Kontrolle in Review</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="stamm"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">AIMY 1 - M1: Taxonomy</a></td>
-          </tr>
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">Vermittelt in</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Präsentation XY</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 class="indi">Ich verstehe die RACI-Matrix und kann diese anwenden.</h2>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Art</th>
-            <th scope="col">Selbsteinschätzung</th>
-            <th scope="col">Erfolgsbestätigung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">Können</td>
-            <td scope="row">Gut</td>
-            <td scope="row">76%</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Lernfeld/Modul</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>IT Service Management</td>
-          </tr>
-          <tr>
-            <td>Besondere Betriebslehre, HR</td>
-          </tr>
-        </tbody>
-
-        <thead>
-          <tr>
-            <th scope="col">Kontrolle in Review</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="stamm"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">SERM Mastery 1</a></td>
-          </tr>
-          <tr>
-            <td class="stamm"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">UNTF Mastery 1</a></td>
-          </tr>
-        </tbody>
-
-        <thead>
-          <tr>
-            <th scope="col">Vermittelt in</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Event 8 SERM</td>
-          </tr>
-          <tr>
-            <td>Event 6 UNTF</td>
-          </tr>
-          <tr>
-            <td>Begleitunterlagen Event 8 SERM</td>
-          </tr>
-          <tr>
-            <td>Begleitunterlagen Event 6 UNTF</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 class="indi">Ich behersche meine Möglichkeiten, um Aufschieben zu vermeiden.</h2>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Art</th>
-            <th scope="col">Selbsteinschätzung</th>
-            <th scope="col">Erfolgsbestätigung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">Tuen</td>
-            <td scope="row">Nach garnicht</td>
-            <td scope="row">16%</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Lernfeld/Modul</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Time Management</td>
-          </tr>
-          <tr>
-            <td>Pers. Zeitmanagement</td>
-          </tr>
-        </tbody>
-
-        <thead>
-          <tr>
-            <th scope="col">Kontrolle in Review</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="stamm"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">Wie ich Aufschieberitis bekämfe</a></td>
-          </tr>
-        </tbody>
-
-        <thead>
-          <tr>
-            <th scope="col">Vermittelt in</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="https://www.linkedin.com/learning/time-management-tips-weekly/fight-negative-procrastination" target="video">inLearning-Video von Dave Crenshaw [EN]</a></td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <h1>...</h1>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
+      <label class="custom-control-label" for="customRadioInline1">Alle Lernziele</label>
     </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" (click)="this.loadMyEduObjectives()">
+      <label class="custom-control-label" for="customRadioInline2">Meine Lernziele</label>
+    </div>
+
+    <div class="form-group">
+      <label for="sel2">Lernfeld</label>
+      <select class="custom-select" id="sel2">
+        <option>-- alle ---</option>
+        <option *ngFor="let fl of eduoS.getFields()">{{ fl }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="sel1">Modul</label>
+      <select class="custom-select" id="sel1">
+        <option>-- alle ---</option>
+        <option *ngFor="let mo of eduoS.getModules()">{{ mo }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <div *ngFor="let edo of eduoS.eduobjective; index as i" class="card">
+        <div class="card-header" (click)="eduoS.select(i)">
+          <img *ngIf="edo.isMy()" src="../../client/img/open-iconic/person-2x.png" />
+          <span [class.indi]="eduoS.isSelected(i)">{{ edo.getName() }}</span>
+        </div>
+        <div class="card-body">
+          <div *ngIf="eduoS.isSelected(i)">
+            <div class="row">
+              <div class="col-sm">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Lernfeld:&nbsp;</strong>{{ edo.getField() }}</li>
+                  <li class="list-group-item"><strong>Modul:&nbsp;</strong>{{ edo.getModule() }}</li>
+                  <li class="list-group-item"><strong>Taxonomie:&nbsp;</strong>{{ edo.getTaxonomy() }}&nbsp;; &nbsp;{{ edo.getType() }}</li>
+                  <li class="list-group-item"><strong>Skill:&nbsp;</strong>{{ edo.getSkillgoal() }}</li>
+                  <li class="list-group-item"><strong>Verwendet:&nbsp;</strong>{{ edo.getUsage() }}</li>
+                </ul>
+              </div>
+              <div class="col-sm">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Reviews:&nbsp;</strong></li>
+                  <li class="list-group-item"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">Wie ich Aufschieberitis bekämfe</a></li>
+                  <li class="list-group-item"><a class="nav-link" routerLink="/review/5bbe2b03e7d53f290d323b62" routerLinkActive="active-link">.....</a></li>
+                  <li class="list-group-item"><strong>Lernmittel:&nbsp;</strong></li>
+                  <li class="list-group-item"><a href="https://www.linkedin.com/learning/time-management-tips-weekly/fight-negative-procrastination" target="video">inLearning-Video von Dave Crenshaw [EN]</a></li>
+                  <li class="list-group-item">Event 8 SERM</li>
+                  <li class="list-group-item">Event 6 UNTF</li>
+                  <li class="list-group-item">Begleitunterlagen Event 8 SERM</li>
+                  <li class="list-group-item">Begleitunterlagen Event 6 UNTF</li>
+                </ul>
+              </div>
+              <div class="col-sm">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Selbsteinschätzung:&nbsp;</strong>
+                    <span *ngIf="edo.isMy()&&!edit">{{ edo.getSelfassess() }}&nbsp;</span>
+                    <span *ngIf="edo.isMy()&&edit">
+                      <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="selfassess">
+                        <option>Sehr gut</option>
+                        <option>Gut</option>
+                        <option>Neutral</option>
+                        <option>Nicht gut</option>
+                        <option>Schlecht</option>
+                      </select>
+                    </span>
+                    <img *ngIf="edo.isMy()&&!edit" src="../../client/img/open-iconic/pencil-2x.png" (click)="edit = true"/>
+                    <img *ngIf="edo.isMy()&&edit" src="../../client/img/open-iconic/check-2x.png" (click)="save(i)"/>
+                  </li>
+                  <li class="list-group-item"><strong>Meine Notizen:&nbsp;</strong></li>
+                  <li class="list-group-item">
+                    <textarea placeholder="Erfasse hier Kommentare zu diesem Lernziel!" cols="40" rows="5" [disabled]="!edit">{{ edo.getNotes() }}</textarea>
+                    <img *ngIf="edo.isMy()&&!edit" src="../../client/img/open-iconic/pencil-2x.png" (click)="edit = true"/>
+                    <img *ngIf="edo.isMy()&&edit" src="../../client/img/open-iconic/check-2x.png"  (click)="edit = false"/>
+                  </li>
+                  <li class="list-group-item"><strong>Erfolgsbestätigung:&nbsp;</strong></li>
+                  <li class="list-group-item"><strong>Vorbereitung:&nbsp;</strong>84%</li>
+                  <li class="list-group-item"><strong>Reviews:&nbsp;</strong>76%</li>
+                  <li class="list-group-item"><strong>Nachhaltig:&nbsp;</strong>n/a</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+<!--          
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Lernfeld</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Modul</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let edo of eduoS.eduobjective; index as i">
+                  <td>{{ edo.getField() }}</td>
+                  <td><a class="nav-link" routerLink="/review/" routerLinkActive="active-link">{{ edo.getName() }}</a></td>
+
+                  <td>{{ edo.getName() }}</td>
+                  <td>{{ edo.getModule() }}</td>
+                  
+                  <td>{{ edo.getUsage() }}</td>
+                  <td>{{ mast.type[0] }}</td>
+                  <td>{{ mast.field }}</td>
+                  <td>{{ mast.modul }}</td>
+                  <td><div *ngIf="true">{{ mast.eduobjectives.length }}</div></td>                  
+                  <td>{{ mast.challenges.length }}</td>
+                  <td>{{ mast.earlieststart  | date: 'yyyy-MM-dd'}}</td>
+                  <td>{{ mast.latestend  | date: 'yyyy-MM-dd'}}</td>
+                  
+                  
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="15" style="width: 50%"></div>
+                    </div>
+                  </td>
+                  <td><a class="nav-link" routerLink="/challenge/rid/{{ mast._id }}" routerLinkActive="active-link"><img src="../../client/img/open-iconic/play-circle-2x.png" /></a></td>
+                  <td>
+                    <img *ngIf="mast.options.start" src="../../client/img/open-iconic/media-play-2x.png" />
+                    <img *ngIf="mast.options.delay" src="../../client/img/open-iconic/media-pause-2x.png" />
+                    <img *ngIf="mast.options.replay" src="../../client/img/open-iconic/reload-2x.png" />
+    
+                    <img *ngIf="mast.options.locked" src="../../client/img/open-iconic/lock-locked-2x.png" />
+                    <img *ngIf="!mast.options.locked" src="../../client/img/open-iconic/lock-unlocked-2x.png" />
+    
+                    <img *ngIf="mast.options.coach" src="../../client/img/open-iconic/person-2x.png" />
+                    <img *ngIf="mast.options.group" src="../../client/img/open-iconic/people-2x.png" />
+                  <td></td>
+    
+                </tr>
+              </tbody>
+            </table>    
+-->
+      <h1>...</h1>
+    
   </div>
 <div *ngIf="!userS.isAuthenticated()">
         <h2>Nicht angemeldet</h2>

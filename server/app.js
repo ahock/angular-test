@@ -124,8 +124,9 @@ var userData = new Schema({
     last_login: Date,
     login_history: [String],
     groups: [String],
-    eduobjectives: [{oid: String, name: String, selfassess: String, field: String}],
+    eduobjectives: [{oid: String, name: String, selfassess: String, field: String, notes: String}],
     masteries: [masteryData],
+    reviews: [{oid: String, name: String}],
     lang: String
 },{collection: 'users'});
 
@@ -230,7 +231,48 @@ app.get("/api/0.0.1/user/list", function(req, res) {
 
     console.log("userList from memory:", userList);
     res.send(userList);
-});    
+});
+app.get("/api/0.0.1/user/update", function(req, res) {
+    userDataModel.findOne({token:req.query.UserToken}, function (err, user) {
+        if (err) return console.error(err);
+        // Found user with this token in database
+        console.log("Query:",req.query);
+//        console.log("User:",user);
+        // Udgate Educational Objectives
+        console.log(req.query.EduObj?JSON.parse(req.query.EduObj):"keine Educational Objectives");
+        if(req.query.EduObj) {
+            let edo = JSON.parse(req.query.EduObj);
+            
+            for(let i=0;i<user.eduobjectives.length;i++) {
+                for(let j=0;j<edo.length;j++) {
+                    if(user.eduobjectives[i].oid == edo[j].oid) {
+                       if(edo[j].selfassess) {
+                           user.eduobjectives[i].selfassess =  edo[j].selfassess;
+                       }
+                       if(edo[j].notes) {
+                           user.eduobjectives[i].notes =  edo[j].notes;
+                       }
+                    }
+                }
+            }
+        }
+        // Update Reviews
+        // TODO
+        
+        // Save user
+//        if(user){
+            user.save(function (err, user) {
+                if (err) return console.error(err);
+                userDataModel.find(function (err, user) {
+                    if (err) return console.error(err);
+                    userList = user;
+                });
+            });
+//        }
+    });
+    res.send({success: true, function: "update"});
+});
+
 // User Ende ////////////////////////////////////////////////////////
 
 
@@ -369,9 +411,9 @@ eduobjectiveModel.find(function (err, eo) {
 });
 
 app.get("/api/0.0.1/objective/list", function(req, res) {
-    ///// List with all users
+    ///// List with all educational objectives
 
-//    console.log("reviewList from memory:", reviewList);
+    console.log("eduobjectiveList from memory:", eduobjectiveList.length);
     res.send(eduobjectiveList);
 });
 

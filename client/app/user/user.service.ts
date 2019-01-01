@@ -105,4 +105,13 @@ export class UserService {
         }
         return this.res;
     }
+    public getEduObjectives(): any[] {
+        let myedulist: any[] = [];
+        
+        this.user.eduobjectives.forEach(function(edo: any){
+            myedulist.push(edo);
+        });
+//        console.log("getEduObjectives", myedulist);
+        return myedulist;
+    }
 }

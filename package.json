@@ -1,7 +1,7 @@
 {
-  "name": "todo",
-  "version": "1.0.0",
-  "description": "",
+  "name": "aimy",
+  "version": "0.1.2",
+  "description": "ICMP",
   "main": "index.js",
   "scripts": {
     "start": "node server/app.js",
@@ -11,7 +11,7 @@
     "tsc:w": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Andreas Hock",
   "license": "ISC",
   "dependencies": {
     "@angular/common": "^5.0.0",
@@ -34,6 +34,7 @@
     "core-js": "^2.4.1",
     "express": "^4.14.0",
     "jquery": "^3.0.0",
+    "moment": "^2.22.2",
     "mongoose": "^5.0.8",
     "ngx-bootstrap": "^2.0.2",
     "popper.js": "^1.14.0",
